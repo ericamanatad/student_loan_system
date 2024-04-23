@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package studentloansystem;
-//FIX THE IMPORT ERROR
+
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
 import java.util.Date;
