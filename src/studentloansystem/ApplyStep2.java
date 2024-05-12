@@ -12,11 +12,12 @@ import java.awt.Color;
  */
 public class ApplyStep2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ApplyStep2
-     */
+    Student student;
+    ApplyStep2 apply2;
+    
     Color panDefault, panClick, panEnter; 
-    public ApplyStep2() {
+    public ApplyStep2(Student student) {
+        this.student = student;
         initComponents();
         setResizable(false);
         panDefault = new Color(65,109,25);
@@ -25,6 +26,8 @@ public class ApplyStep2 extends javax.swing.JFrame {
         
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +87,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 65, Short.MAX_VALUE)
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 30)); // NOI18N
@@ -268,7 +271,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelLayout.createSequentialGroup()
                                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6)
@@ -291,8 +294,9 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(PanelLayout.createSequentialGroup()
                                         .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(73, 73, 73)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(35, 35, 35))
                     .addGroup(PanelLayout.createSequentialGroup()
@@ -304,10 +308,6 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addComponent(RedirectBtn)
                                 .addGap(14, 14, 14)))
                         .addGap(57, 57, 57))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelLayout.createSequentialGroup()
-                .addGap(229, 229, 229)
-                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelLayout.setVerticalGroup(
             PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,7 +319,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addGap(12, 12, 12)
+                                .addGap(59, 59, 59)
                                 .addComponent(jLabel4))))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
@@ -328,7 +328,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                         .addComponent(RedirectBtn)))
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(132, 132, 132)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
@@ -336,7 +336,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
+                                .addGap(20, 20, 20)
                                 .addComponent(jLabel10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -350,7 +350,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addComponent(txtProgramEnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtDegreeProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(19, 19, 19)
                                 .addComponent(jLabel7)
@@ -367,15 +367,15 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addComponent(jCheckBox4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox5)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48))
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69)))
-                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                        .addGap(158, 158, 158))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -507,7 +507,8 @@ public class ApplyStep2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ApplyStep2().setVisible(true);
+               //apply2 = new ApplyStep2 (new Student());
+              // apply2.setVisible(true);
             }
         });
     }

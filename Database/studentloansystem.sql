@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 10:39 AM
+-- Generation Time: May 12, 2024 at 05:31 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -88,21 +88,20 @@ CREATE TABLE `loan_table` (
 --
 
 CREATE TABLE `student_table` (
-  `track_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `middle_name` varchar(50) NOT NULL,
   `suffix` varchar(50) NOT NULL,
-  `student_id` varchar(50) NOT NULL,
-  `birthday` date NOT NULL,
+  `birthdate` date NOT NULL,
   `gender` varchar(50) NOT NULL,
-  `phone_num` int(11) NOT NULL,
+  `phone_number` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `nationality` varchar(100) NOT NULL,
   `civil_status` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `zip_code` int(11) NOT NULL,
-  `isActive` bit(1) NOT NULL DEFAULT b'1'
+  `is_active` bit(1) NOT NULL DEFAULT b'1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -137,7 +136,7 @@ ALTER TABLE `loan_table`
 -- Indexes for table `student_table`
 --
 ALTER TABLE `student_table`
-  ADD PRIMARY KEY (`track_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -171,7 +170,7 @@ ALTER TABLE `loan_table`
 -- AUTO_INCREMENT for table `student_table`
 --
 ALTER TABLE `student_table`
-  MODIFY `track_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
