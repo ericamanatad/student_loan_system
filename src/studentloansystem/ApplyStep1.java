@@ -513,6 +513,7 @@ public class ApplyStep1 extends javax.swing.JFrame {
          Student student = new Student(lastName,firstName, middleName, suffix, birthdate, gender,
                  phoneNumber, emailAddress, nationality, civilStatus, address,zipCode);
          ApplyStep2 apply2 = new ApplyStep2(student);
+         LoanSummary loanSummary = new LoanSummary(student);
          apply2.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_NextStep1MouseClicked

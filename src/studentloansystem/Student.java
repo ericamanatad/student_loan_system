@@ -9,6 +9,7 @@ package studentloansystem;
  * 
  * @author Panewels
  */
+
 public class Student {
     private String firstName;
     private String lastName;
@@ -23,6 +24,12 @@ public class Student {
     private String address;
     private String zipCode;
  
+    public Student(){
+    
+    }
+
+
+    
     public Student(String lastName, String firstName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode) {
         this.lastName = lastName;
         this.firstName = firstName;

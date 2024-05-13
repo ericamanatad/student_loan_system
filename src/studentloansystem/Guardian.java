@@ -8,6 +8,7 @@ package studentloansystem;
  *
  * @author Panewels
  */
-public class Guardian extends Student {
+//public class Guardian extends Student {
+    
    
-}
+//}
