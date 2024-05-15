@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package studentloansystem;
-
+import java.util.Scanner;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -58,14 +58,16 @@ public class ApplyStep2 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox2 = new javax.swing.JCheckBox();
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
         jApplyBtn = new javax.swing.JLabel();
         RedirectBtn = new javax.swing.JLabel();
         txtAmount = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        txtNumOfYrsToPay = new javax.swing.JTextField();
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(65, 109, 25));
@@ -180,7 +182,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
         jLabel9.setText("Loan Plan:");
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        jLabel10.setText("Total amount needed");
+        jLabel10.setText("Number of years to pay:");
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel11.setText("What is the fund for?");
@@ -189,17 +191,17 @@ public class ApplyStep2 extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jCheckBox1.setText("Tuition Fee");
 
+        jCheckBox2.setBackground(java.awt.Color.white);
+        jCheckBox2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jCheckBox2.setText("Gadget/s for School");
+
         jCheckBox3.setBackground(java.awt.Color.white);
         jCheckBox3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jCheckBox3.setText("Gadget/s for School");
+        jCheckBox3.setText("Allowance");
 
         jCheckBox4.setBackground(java.awt.Color.white);
         jCheckBox4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jCheckBox4.setText("Allowance");
-
-        jCheckBox5.setBackground(java.awt.Color.white);
-        jCheckBox5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jCheckBox5.setText("Thesis");
+        jCheckBox4.setText("Thesis");
 
         jApplyBtn.setFont(new java.awt.Font("Yu Gothic UI Light", 0, 14)); // NOI18N
         jApplyBtn.setText("Already submitted loan application?");
@@ -253,6 +255,9 @@ public class ApplyStep2 extends javax.swing.JFrame {
             .addGap(0, 65, Short.MAX_VALUE)
         );
 
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
+        jLabel12.setText("Total amount needed");
+
         javax.swing.GroupLayout PanelLayout = new javax.swing.GroupLayout(Panel);
         Panel.setLayout(PanelLayout);
         PanelLayout.setHorizontalGroup(
@@ -275,20 +280,26 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                     .addComponent(jLabel7))
                                 .addGap(153, 153, 153)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jCheckBox5)
                                     .addComponent(jLabel11)
-                                    .addComponent(jCheckBox1)
-                                    .addComponent(jCheckBox3)
-                                    .addComponent(jCheckBox4)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel10)
-                                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(PanelLayout.createSequentialGroup()
+                                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox1)
+                                            .addComponent(jCheckBox2))
+                                        .addGap(50, 50, 50)
+                                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox4)
+                                            .addComponent(jCheckBox3)))
+                                    .addComponent(txtNumOfYrsToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12)))
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGap(72, 72, 72)
                                 .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(80, 80, 80)
                                 .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35))
                     .addGroup(PanelLayout.createSequentialGroup()
@@ -317,7 +328,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RedirectBtn)))
-                .addGap(6, 6, Short.MAX_VALUE)
+                .addGap(15, 36, Short.MAX_VALUE)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,43 +338,45 @@ public class ApplyStep2 extends javax.swing.JFrame {
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel2))
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel12)))
+                            .addComponent(jLabel9))
+                        .addGap(8, 8, 8)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addGap(18, 18, 18)
-                                .addComponent(jCheckBox1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox3))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addComponent(txtProgramEnrolled, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(jCheckBox4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCheckBox5))
-                            .addGroup(PanelLayout.createSequentialGroup()
-                                .addGap(178, 178, 178)
+                                .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(200, 200, 200))))
+                                    .addComponent(jCheckBox2)
+                                    .addGroup(PanelLayout.createSequentialGroup()
+                                        .addGap(178, 178, 178)
+                                        .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(200, 200, 200))
+                            .addGroup(PanelLayout.createSequentialGroup()
+                                .addComponent(txtNumOfYrsToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jCheckBox3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jCheckBox4)
+                                .addGap(403, 403, 403))))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -402,10 +415,23 @@ public class ApplyStep2 extends javax.swing.JFrame {
     }//GEN-LAST:event_SubmitBtnMouseEntered
 
     private void SubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitBtnMouseClicked
-         String idNumber = student.getIdNumber();
+        
+        String idNumber = student.getIdNumber();
         String department = txtDepartment.getText();
         String programEnrolled = txtProgramEnrolled.getText();
         String yearLevel = txtYearLevel.getText();
+        
+        double amountToLoan = Double.parseDouble(txtAmount.getText());
+        double numOfYrsToPay = Double.parseDouble(txtNumOfYrsToPay.getText());
+        double interestRate = 0.005;
+        String purpose = "";
+        //LAST TOUCH BY EKAI
+        //please finalize how the data flows and the atributes to use in this system tbc...
+        
+    //private javax.swing.JCheckBox jCheckBox1;
+   // private javax.swing.JCheckBox jCheckBox2;
+    //private javax.swing.JCheckBox jCheckBox3;
+    //private javax.swing.JCheckBox jCheckBox4;
          
         Student education = new Student(idNumber, department, programEnrolled, yearLevel);
         LoanSummary loanSummary = new LoanSummary(student, education);
@@ -494,12 +520,13 @@ public class ApplyStep2 extends javax.swing.JFrame {
     private javax.swing.JPanel SubmitBtn;
     private javax.swing.JLabel jApplyBtn;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -513,6 +540,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtAmount;
     private javax.swing.JTextField txtDepartment;
+    private javax.swing.JTextField txtNumOfYrsToPay;
     private javax.swing.JTextField txtProgramEnrolled;
     private javax.swing.JTextField txtYearLevel;
     // End of variables declaration//GEN-END:variables
