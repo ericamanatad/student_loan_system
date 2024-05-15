@@ -17,7 +17,7 @@ public class LoanSummary extends javax.swing.JFrame {
     /**
      * Creates new form LoanSummary
      */
-    Student student;
+    private Student student;
     Color panDefault, panClick, panEnter;
     
     public LoanSummary() {
@@ -31,10 +31,11 @@ public class LoanSummary extends javax.swing.JFrame {
         
         //RedirectBtn.setBackground(new Color(242,242,242)); -- Next button from ApplyStep1
     }
-
-    public LoanSummary(Student student){
+   
+    public LoanSummary(Student student, Student education){
         this.student = student;
         initComponents();
+        //this.fullName = student.getFirstName();
         setResizable(false);
         panDefault = new Color(65,109,25);
         panClick = new Color(141, 236, 180);
@@ -43,8 +44,23 @@ public class LoanSummary extends javax.swing.JFrame {
         //I dont know how to pass the student data. Last editted
         //Tiwas ari EKAAAAIIIIII
         //============================================================================//
-        JOptionPane.showMessageDialog(null, "Hello, "+ student.getFirstName() +"!(LoanSummary(Student student)");
-        
+       // JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
+        LabelIDNo.setText("Student ID No: " + student.getIdNumber());
+        LabelFullName.setText("FullName: " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName());
+        LabelBirthdate.setText("Birthdate: " + student.getBirthdate());
+        LabelGender.setText("Gender: " + student.getGender());
+        LabelPhoneNumber.setText("Phone Number: " + student.getPhoneNumber());
+        LabelEmail.setText("Email Address: " + student.getEmailAddress());
+        LabelNationality.setText("Nationality: " + student.getNationality());
+        LabelCivilStatus.setText("Civil Status: " + student.getCivilStatus());
+        LabelAddress.setText("Address: " + student.getAddress());
+        LabelZipCode.setText("Zip Code: " + student.getZipCode());
+        LabelGuardianName.setText("Name of parent/guardian: " + student.getGuardianFullName());
+        LabelRelationship.setText("Relationship: " + student.getGuardianRelationship());
+        LabelGuardianPhoneNumber.setText("Phone Number: " + student.getGuardianContactNumber());
+        LabelDepartment.setText("Department Name: " + education.getDepartment());
+        LabelProgramEnrolled.setText("Department Name: " + education.getProgramEnrolled());
+        LabelYearLevel.setText("Department Name: " + education.getYearLevel());
     }
 
     /**
@@ -73,9 +89,8 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelGuardianName = new javax.swing.JLabel();
         LabelRelationship = new javax.swing.JLabel();
         LabelGuardianPhoneNumber = new javax.swing.JLabel();
-        LabelNameOfSchool = new javax.swing.JLabel();
+        LabelDepartment = new javax.swing.JLabel();
         LabelProgramEnrolled = new javax.swing.JLabel();
-        LabelDegreeProgram = new javax.swing.JLabel();
         LabelYearLevel = new javax.swing.JLabel();
         LabelLastName2 = new javax.swing.JLabel();
         LabelLastName3 = new javax.swing.JLabel();
@@ -109,6 +124,11 @@ public class LoanSummary extends javax.swing.JFrame {
 
         LabelFullName.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelFullName.setText("Full Name:");
+        LabelFullName.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                LabelFullNamePropertyChange(evt);
+            }
+        });
 
         LabelBirthdate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelBirthdate.setText("Birthdate:");
@@ -150,14 +170,11 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelGuardianPhoneNumber.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelGuardianPhoneNumber.setText("Phone Number:");
 
-        LabelNameOfSchool.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        LabelNameOfSchool.setText("Name of School:");
+        LabelDepartment.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelDepartment.setText("Department Name:");
 
         LabelProgramEnrolled.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelProgramEnrolled.setText("Program Enrolled:");
-
-        LabelDegreeProgram.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        LabelDegreeProgram.setText("Degree Program:");
 
         LabelYearLevel.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelYearLevel.setText("Year Level:");
@@ -236,32 +253,24 @@ public class LoanSummary extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(LabelIDNo)
-                                    .addGap(251, 251, 251))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(LabelFullName)
-                                    .addGap(275, 275, 275)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelZipCode)
-                                    .addComponent(LabelGender)
-                                    .addComponent(LabelBirthdate)
-                                    .addComponent(LabelEmail)
-                                    .addComponent(LabelPhoneNumber)
-                                    .addComponent(LabelNationality)
-                                    .addComponent(LabelCivilStatus)
-                                    .addComponent(LabelAddress)
-                                    .addComponent(LabelLastName2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(LabelFullName)
+                            .addComponent(LabelZipCode)
+                            .addComponent(LabelGender)
+                            .addComponent(LabelBirthdate)
+                            .addComponent(LabelEmail)
+                            .addComponent(LabelPhoneNumber)
+                            .addComponent(LabelNationality)
+                            .addComponent(LabelCivilStatus)
+                            .addComponent(LabelAddress)
+                            .addComponent(LabelLastName2)
+                            .addComponent(LabelIDNo))
+                        .addGap(192, 192, 192)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LabelLastName1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelProgramEnrolled, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelDegreeProgram, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelYearLevel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelRelationship, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelNameOfSchool, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelDepartment, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelLastName3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,9 +300,9 @@ public class LoanSummary extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                                 .addComponent(LabelLastName2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(LabelIDNo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LabelFullName)
@@ -329,13 +338,12 @@ public class LoanSummary extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(LabelLastName3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelNameOfSchool)
+                                .addComponent(LabelDepartment)
                                 .addGap(5, 5, 5)
                                 .addComponent(LabelProgramEnrolled)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelDegreeProgram)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelYearLevel)))
+                                .addComponent(LabelYearLevel)
+                                .addGap(22, 22, 22)))
                         .addGap(30, 30, 30)
                         .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
@@ -350,8 +358,9 @@ public class LoanSummary extends javax.swing.JFrame {
 
     private void SubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitBtnMouseClicked
 
-        LoanSummary loanSummary = new LoanSummary(student);
-        loanSummary.setVisible(true);
+        //code where to navigate next? 
+        //shall we now display the page where the student will be give the transaction code to track?
+        //--erica
         this.dispose();
     }//GEN-LAST:event_SubmitBtnMouseClicked
 
@@ -375,6 +384,10 @@ public class LoanSummary extends javax.swing.JFrame {
         SubmitBtn.setBackground(panDefault);
     }//GEN-LAST:event_SubmitBtnMouseReleased
 
+    private void LabelFullNamePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_LabelFullNamePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LabelFullNamePropertyChange
+
     /**
      * @param args the command line arguments
      */
@@ -386,8 +399,11 @@ public class LoanSummary extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Student student = new Student();
-                LoanSummary loanSummary = new LoanSummary(student);
-                loanSummary.setVisible(true);
+                Student education = new Student();
+                LoanSummary loanSummary = new LoanSummary(student, education);
+                JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
+
+                //loanSummary.setVisible(true);
             }
         });
     }
@@ -395,7 +411,7 @@ public class LoanSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelAddress;
     private javax.swing.JLabel LabelBirthdate;
     private javax.swing.JLabel LabelCivilStatus;
-    private javax.swing.JLabel LabelDegreeProgram;
+    private javax.swing.JLabel LabelDepartment;
     private javax.swing.JLabel LabelEmail;
     private javax.swing.JLabel LabelFullName;
     private javax.swing.JLabel LabelGender;
@@ -405,7 +421,6 @@ public class LoanSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelLastName1;
     private javax.swing.JLabel LabelLastName2;
     private javax.swing.JLabel LabelLastName3;
-    private javax.swing.JLabel LabelNameOfSchool;
     private javax.swing.JLabel LabelNationality;
     private javax.swing.JLabel LabelPhoneNumber;
     private javax.swing.JLabel LabelProgramEnrolled;

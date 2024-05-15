@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
  */
 public class ApplyStep2 extends javax.swing.JFrame {
 
-    Student student;
-    ApplyStep2 apply2;
+    private Student student;
+    //ApplyStep2 apply2;
     
     Color panDefault, panClick, panEnter; 
     public ApplyStep2(Student student) {
@@ -48,13 +48,11 @@ public class ApplyStep2 extends javax.swing.JFrame {
         BackBtn = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtNameofSchool = new javax.swing.JTextField();
+        txtDepartment = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtProgramEnroll = new javax.swing.JTextField();
+        txtProgramEnrolled = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtDegreeProgram = new javax.swing.JTextField();
         txtYearLevel = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -169,16 +167,13 @@ public class ApplyStep2 extends javax.swing.JFrame {
         jLabel6.setText("Education Details:");
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        jLabel2.setText("Name of School:");
+        jLabel2.setText("Department Name:");
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel3.setText("Program Enrolled:");
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel7.setText("Year Level:");
-
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        jLabel8.setText("Degree Program:");
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 20)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(65, 109, 25));
@@ -269,16 +264,14 @@ public class ApplyStep2 extends javax.swing.JFrame {
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelLayout.createSequentialGroup()
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel2)
-                                    .addComponent(txtNameofSchool, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
-                                    .addComponent(txtProgramEnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8)
-                                    .addComponent(txtDegreeProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtProgramEnrolled, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel7))
                                 .addGap(153, 153, 153)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +317,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RedirectBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(6, 6, Short.MAX_VALUE)
                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelLayout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -341,7 +334,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addComponent(jLabel10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNameofSchool, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
@@ -354,9 +347,11 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox3))
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(txtProgramEnroll, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel8)))
+                                .addComponent(txtProgramEnrolled, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelLayout.createSequentialGroup()
@@ -364,12 +359,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jCheckBox5))
                             .addGroup(PanelLayout.createSequentialGroup()
-                                .addComponent(txtDegreeProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(19, 19, 19)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtYearLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
+                                .addGap(178, 178, 178)
                                 .addGroup(PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -412,8 +402,13 @@ public class ApplyStep2 extends javax.swing.JFrame {
     }//GEN-LAST:event_SubmitBtnMouseEntered
 
     private void SubmitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmitBtnMouseClicked
-
-        LoanSummary loanSummary = new LoanSummary(student);
+         String idNumber = student.getIdNumber();
+        String department = txtDepartment.getText();
+        String programEnrolled = txtProgramEnrolled.getText();
+        String yearLevel = txtYearLevel.getText();
+         
+        Student education = new Student(idNumber, department, programEnrolled, yearLevel);
+        LoanSummary loanSummary = new LoanSummary(student, education);
         loanSummary.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_SubmitBtnMouseClicked
@@ -487,7 +482,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
                 Student student = new Student(); 
                 ApplyStep2 apply2 = new ApplyStep2(student);
                 apply2.setVisible(true);
-        JOptionPane.showMessageDialog(null, "Hello, "+ student.getFirstName() +"! - main in applyStep2");
+                JOptionPane.showMessageDialog(null, "Hello, "+ student.getFirstName() +"! - main in applyStep2");
             }
         });
     }
@@ -513,14 +508,12 @@ public class ApplyStep2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtAmount;
-    private javax.swing.JTextField txtDegreeProgram;
-    private javax.swing.JTextField txtNameofSchool;
-    private javax.swing.JTextField txtProgramEnroll;
+    private javax.swing.JTextField txtDepartment;
+    private javax.swing.JTextField txtProgramEnrolled;
     private javax.swing.JTextField txtYearLevel;
     // End of variables declaration//GEN-END:variables
 }

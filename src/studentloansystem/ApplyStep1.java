@@ -78,7 +78,7 @@ public class ApplyStep1 extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         txtRelationship = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        txtPhoneNumber1 = new javax.swing.JTextField();
+        txtGuardianPhoneNumber = new javax.swing.JTextField();
         NextStep1 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jFormattedTextFieldBirthdate = new javax.swing.JFormattedTextField();
@@ -335,7 +335,7 @@ public class ApplyStep1 extends javax.swing.JFrame {
                                     .addGap(40, 40, 40)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel20)
-                                        .addComponent(txtPhoneNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtGuardianPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(txtFullNameGuardian, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(469, 469, 469)
@@ -434,7 +434,7 @@ public class ApplyStep1 extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPhoneNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtGuardianPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -492,13 +492,18 @@ public class ApplyStep1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         RedirectBtn.setForeground(new Color(0,0,0));
     }//GEN-LAST:event_RedirectBtnMouseExited
+private void NextStep1ActionPerformed(java.awt.event.MouseEvent evt) {   
+    
+        //check in notes pls
 
+}
     private void NextStep1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextStep1MouseClicked
          // TODO add your handling code here:
          //get the student details input
+         String idNumber = txtStudentId.getText();
          String lastName = txtLastName.getText();
          String firstName = txtFirstName.getText();
-         String middleName = txtMiddleName.getText();
+             String middleName = txtMiddleName.getText();
          String suffix = (String) comboBoxSuffix.getSelectedItem();
          //formatted birthdate
          String birthdate = jFormattedTextFieldBirthdate.getText();
@@ -508,12 +513,19 @@ public class ApplyStep1 extends javax.swing.JFrame {
          String nationality = txtNationality.getText();
          String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
          String address = txtAddress.getText();
-         String zipCode = txtZipCode.getText();
+         String zipCode = txtZipCode.getText();         
+         String department = txtZipCode.getText();
+         String programEnrolled = txtZipCode.getText();
+         String yearLevel = txtZipCode.getText();
+         String guardianFullName = txtFullNameGuardian.getText();
+         String guardianRelationship = txtRelationship.getText();
+         String guardianContactNumber = txtGuardianPhoneNumber.getText();
          
-         Student student = new Student(lastName,firstName, middleName, suffix, birthdate, gender,
-                 phoneNumber, emailAddress, nationality, civilStatus, address,zipCode);
+         Student student = new Student(idNumber, lastName,firstName, middleName, suffix, birthdate, gender,
+                 phoneNumber, emailAddress, nationality, civilStatus, address,zipCode,  department, programEnrolled, yearLevel, guardianFullName, guardianRelationship, guardianContactNumber);
          ApplyStep2 apply2 = new ApplyStep2(student);
-         LoanSummary loanSummary = new LoanSummary(student);
+         Student education = new Student();
+         LoanSummary loanSummary = new LoanSummary(student, education);
          apply2.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_NextStep1MouseClicked
@@ -609,11 +621,11 @@ public class ApplyStep1 extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmailAddress;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtFullNameGuardian;
+    private javax.swing.JTextField txtGuardianPhoneNumber;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtMiddleName;
     private javax.swing.JTextField txtNationality;
     private javax.swing.JTextField txtPhoneNumber;
-    private javax.swing.JTextField txtPhoneNumber1;
     private javax.swing.JTextField txtRelationship;
     private javax.swing.JTextField txtStudentId;
     private javax.swing.JTextField txtZipCode;

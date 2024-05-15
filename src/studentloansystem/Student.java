@@ -11,6 +11,7 @@ package studentloansystem;
  */
 
 public class Student {
+    private String idNumber;    
     private String firstName;
     private String lastName;
     private String middleName;
@@ -23,6 +24,13 @@ public class Student {
     private String civilStatus;
     private String address;
     private String zipCode;
+    private String department;    
+    private String programEnrolled;
+    private String yearLevel;
+    private String guardianFullName;
+    private String guardianRelationship;
+    private String guardianContactNumber;
+
  
     public Student(){
     
@@ -30,7 +38,8 @@ public class Student {
 
 
     
-    public Student(String lastName, String firstName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode) {
+    public Student(String idNumber, String lastName, String firstName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode, String department, String programEnrolled, String yearLevel, String guardianFullName, String guardianRelationship, String guardianContactNumber) {
+        this.idNumber = idNumber;
         this.lastName = lastName;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -43,8 +52,37 @@ public class Student {
         this.civilStatus = civilStatus;
         this.address = address;
         this.zipCode = zipCode;
+        this.department = department;
+        this.programEnrolled = programEnrolled;
+        this.yearLevel = yearLevel;
+        this.guardianFullName = guardianFullName;
+        this.guardianRelationship = guardianRelationship;
+        this.guardianContactNumber = guardianContactNumber;
     }
 
+    public Student( String idNumber, String department, String programEnrolled, String yearLevel){
+        this.department = idNumber;
+        this.department = department;
+        this.programEnrolled = programEnrolled;
+        this.yearLevel = yearLevel;
+    }
+      /**
+     * Getter for the student's idNumber
+     * 
+     * @return the student'sidNumber
+     */
+    public String getIdNumber() {
+        return idNumber;
+}
+
+    /**
+     * Setter for the student's first name.
+     * 
+     * @param idNumber the new first name
+     */
+    public void setIdNumber(String idNumber) {
+        this.idNumber = idNumber;
+    }
 
     /**
      * Getter for the student's first name.
@@ -238,6 +276,54 @@ public class Student {
         this.zipCode = zipCode;
     }
 
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getProgramEnrolled() {
+        return programEnrolled;
+    }
+
+    public void setProgramEnrolled(String programEnrolled) {
+        this.programEnrolled = programEnrolled;
+    }
+
+    public String getYearLevel() {
+        return yearLevel;
+    }
+
+    public void setYearLevel(String yearLevel) {
+        this.yearLevel = yearLevel;
+    }
+
+    public String getGuardianFullName() {
+        return guardianFullName;
+    }
+
+    public void setGuardianFullName(String guardianFullName) {
+        this.guardianFullName = guardianFullName;
+    }
+
+    public String getGuardianRelationship() {
+        return guardianRelationship;
+    }
+
+    public void setGuardianRelationship(String guardianRelationship) {
+        this.guardianRelationship = guardianRelationship;
+    }
+
+    public String getGuardianContactNumber() {
+        return guardianContactNumber;
+    }
+
+    public void setGuardianContactNumber(String guardianContactNumber) {
+        this.guardianContactNumber = guardianContactNumber;
+    }
+    
      @Override
     public String toString() {
         return "Student{" +
@@ -253,6 +339,12 @@ public class Student {
                 ", civilStatus='" + civilStatus + '\'' +
                 ", address='" + address + '\'' +
                 ", zipCode='" + zipCode + '\'' +
+                ", department='" + department + '\'' +
+                ", programEnrolled='" + programEnrolled + '\'' +
+                ", yearLevel='" + yearLevel + '\'' +
+                ", guardianFullName='" + guardianFullName + '\'' +
+                ", guardianRelationship='" + guardianRelationship + '\'' +
+                ", guardianContactNumber='" + guardianContactNumber + '\'' +
                 '}';
     }
 }
