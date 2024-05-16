@@ -18,6 +18,7 @@ public class LoanSummary extends javax.swing.JFrame {
      * Creates new form LoanSummary
      */
     private Student student;
+    private StudentLoan loan;
     Color panDefault, panClick, panEnter;
     
     public LoanSummary() {
@@ -31,9 +32,9 @@ public class LoanSummary extends javax.swing.JFrame {
         
         //RedirectBtn.setBackground(new Color(242,242,242)); -- Next button from ApplyStep1
     }
-   
-    public LoanSummary(Student student, Student education){
+    public LoanSummary(Student student, Student education, StudentLoan loan){
         this.student = student;
+        this.loan = loan;
         initComponents();
         //this.fullName = student.getFirstName();
         setResizable(false);
@@ -61,6 +62,12 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelDepartment.setText("Department Name: " + education.getDepartment());
         LabelProgramEnrolled.setText("Program Enrolled: " + education.getProgramEnrolled());
         LabelYearLevel.setText("Year Level: " + education.getYearLevel());
+        LabelTotalAmountNeeded.setText("Total amount needed: " + loan.getTotalAmount());
+        LabelNumOfYrsToPay.setText("Number of years to pay: " + loan.getNumYrsToPay());
+        LabelInterestRate.setText("Interest Rate : " + loan.getInterestRate());
+        LabelWhatIsTheFundFor.setText("What is the fund for? : " + loan.getPurpose());
+        
+
         //LabelNumOfYrsToPay
     }
 
@@ -73,6 +80,7 @@ public class LoanSummary extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -101,6 +109,10 @@ public class LoanSummary extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         LabelNumOfYrsToPay = new javax.swing.JLabel();
+        LabelInterestRate = new javax.swing.JLabel();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1163, 628));
@@ -243,49 +255,55 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelNumOfYrsToPay.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelNumOfYrsToPay.setText("Number of years to pay:");
 
+        LabelInterestRate.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelInterestRate.setText("Interest Rate :");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(111, 111, 111)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelZipCode)
+                            .addComponent(LabelAddress))
+                        .addGap(407, 407, 407))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelFullName)
-                            .addComponent(LabelZipCode)
                             .addComponent(LabelGender)
                             .addComponent(LabelBirthdate)
                             .addComponent(LabelEmail)
                             .addComponent(LabelPhoneNumber)
                             .addComponent(LabelNationality)
                             .addComponent(LabelCivilStatus)
-                            .addComponent(LabelAddress)
                             .addComponent(LabelLastName2)
                             .addComponent(LabelIDNo))
-                        .addGap(192, 192, 192)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LabelLastName1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelProgramEnrolled, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelYearLevel, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelDepartment, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelLastName3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelGuardianName)
-                                    .addComponent(LabelGuardianPhoneNumber)
-                                    .addComponent(LabelRelationship))
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelNumOfYrsToPay)
-                                    .addComponent(LabelWhatIsTheFundFor)
-                                    .addComponent(LabelTotalAmountNeeded))))))
+                            .addComponent(LabelGuardianName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelGuardianPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelRelationship, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(99, 99, 99)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelNumOfYrsToPay)
+                    .addComponent(LabelInterestRate)
+                    .addComponent(LabelTotalAmountNeeded)
+                    .addComponent(LabelWhatIsTheFundFor))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -306,53 +324,57 @@ public class LoanSummary extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(LabelTotalAmountNeeded)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelNumOfYrsToPay)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelInterestRate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelWhatIsTheFundFor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(LabelLastName2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(LabelIDNo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelFullName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelBirthdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelGender)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelPhoneNumber)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelNationality)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelCivilStatus)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LabelLastName2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(LabelIDNo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelFullName)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelBirthdate)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelGender)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelPhoneNumber)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelEmail)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelNationality)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelCivilStatus))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LabelLastName1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelGuardianName)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelRelationship)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelGuardianPhoneNumber)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(LabelLastName3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelDepartment)
+                                        .addGap(5, 5, 5)
+                                        .addComponent(LabelProgramEnrolled)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelYearLevel)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LabelAddress)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelZipCode))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(LabelLastName1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelGuardianName)
-                                    .addComponent(LabelTotalAmountNeeded))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelRelationship)
-                                    .addComponent(LabelNumOfYrsToPay))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelGuardianPhoneNumber)
-                                    .addComponent(LabelWhatIsTheFundFor))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LabelLastName3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelDepartment)
-                                .addGap(5, 5, 5)
-                                .addComponent(LabelProgramEnrolled)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelYearLevel)
-                                .addGap(22, 22, 22)))
-                        .addGap(30, 30, 30)
+                                .addComponent(LabelZipCode)
+                                .addGap(30, 30, 30)))
                         .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -408,7 +430,8 @@ public class LoanSummary extends javax.swing.JFrame {
             public void run() {
                 Student student = new Student();
                 Student education = new Student();
-                LoanSummary loanSummary = new LoanSummary(student, education);
+                StudentLoan loan = new StudentLoan();
+                LoanSummary loanSummary = new LoanSummary(student, education, loan);
                 JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
 
                 //loanSummary.setVisible(true);
@@ -426,6 +449,7 @@ public class LoanSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelGuardianName;
     private javax.swing.JLabel LabelGuardianPhoneNumber;
     private javax.swing.JLabel LabelIDNo;
+    private javax.swing.JLabel LabelInterestRate;
     private javax.swing.JLabel LabelLastName1;
     private javax.swing.JLabel LabelLastName2;
     private javax.swing.JLabel LabelLastName3;
@@ -439,6 +463,7 @@ public class LoanSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelYearLevel;
     private javax.swing.JLabel LabelZipCode;
     private javax.swing.JPanel SubmitBtn;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;

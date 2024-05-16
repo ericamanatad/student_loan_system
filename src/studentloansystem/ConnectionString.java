@@ -11,6 +11,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -19,7 +23,7 @@ import java.sql.PreparedStatement;
  */
 public class ConnectionString {
     
-    Connection con = null;
+    private Connection con = null;
     
     public static Connection DbConnection(){
         try {
@@ -32,4 +36,5 @@ public class ConnectionString {
             return null;
         }
     }
+
 }

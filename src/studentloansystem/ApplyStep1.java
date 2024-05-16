@@ -525,7 +525,8 @@ private void NextStep1ActionPerformed(java.awt.event.MouseEvent evt) {
                  phoneNumber, emailAddress, nationality, civilStatus, address,zipCode,  department, programEnrolled, yearLevel, guardianFullName, guardianRelationship, guardianContactNumber);
          ApplyStep2 apply2 = new ApplyStep2(student);
          Student education = new Student();
-         LoanSummary loanSummary = new LoanSummary(student, education);
+         StudentLoan loan  = new StudentLoan();
+         LoanSummary loanSummary = new LoanSummary(student, education, loan);
          apply2.setVisible(true);
          this.dispose();
     }//GEN-LAST:event_NextStep1MouseClicked

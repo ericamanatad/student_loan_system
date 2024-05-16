@@ -16,7 +16,9 @@ public class StudentLoan {
     private double paymentPerMonth;
     private String purpose;
     
-
+    public StudentLoan(){
+    }
+    
     public StudentLoan(String studentID, double totalAmount, double numYrsToPay, double interestRate, double paymentPerMonth, String purpose) {
         this.studentID = studentID;
         this.totalAmount = totalAmount;
