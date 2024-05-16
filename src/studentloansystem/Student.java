@@ -66,6 +66,27 @@ public class Student {
         this.programEnrolled = programEnrolled;
         this.yearLevel = yearLevel;
     }
+
+    public Student(String idNumber, String firstName, String lastName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode, String guardianFullName, String guardianRelationship, String guardianContactNumber) {
+        this.idNumber = idNumber;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.suffix = suffix;
+        this.birthdate = birthdate;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+        this.nationality = nationality;
+        this.civilStatus = civilStatus;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.guardianFullName = guardianFullName;
+        this.guardianRelationship = guardianRelationship;
+        this.guardianContactNumber = guardianContactNumber;
+    }
+    
+    
       /**
      * Getter for the student's idNumber
      * 
@@ -324,7 +345,9 @@ public class Student {
         this.guardianContactNumber = guardianContactNumber;
     }
     
-     @Override
+    
+   /*
+      @Override
     public String toString() {
         return "Student{" +
                 ", lastName='" + lastName + '\'' +
@@ -347,4 +370,5 @@ public class Student {
                 ", guardianContactNumber='" + guardianContactNumber + '\'' +
                 '}';
     }
+    */
 }

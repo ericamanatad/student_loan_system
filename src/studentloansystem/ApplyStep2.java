@@ -496,8 +496,13 @@ public class ApplyStep2 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Invalid amount selected."); // Changed 'this' to 'null'
         }
         double numOfYrsToPay = Double.parseDouble(txtNumOfYrsToPay.getText());
+        double numPayments = numOfYrsToPay * 12;
         double interestRate = 0.005;
         double monthlyPayment = 0;
+        monthlyPayment = amountToLoan * (interestRate * Math.pow(1 + interestRate, numPayments)) / (Math.pow(1 + interestRate, numPayments) - 1);
+
+        
+        
 
  
         String purpose;
@@ -516,7 +521,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Loan details " + amountToLoan  + numOfYrsToPay + interestRate + " " + purpose);
 
         Student education = new Student(idNumber, department, programEnrolled, yearLevel);
-        StudentLoan loan = new StudentLoan(student.getIdNumber(),amountToLoan,  numOfYrsToPay, interestRate, monthlyPayment, purpose );
+        StudentLoan loan = new StudentLoan(student.getIdNumber(),amountToLoan,  numOfYrsToPay, interestRate, monthlyPayment, purpose, numPayments );
         
         LoanSummary loanSummary = new LoanSummary(student, education, loan);
         loanSummary.setVisible(true);

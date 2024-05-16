@@ -15,17 +15,23 @@ public class StudentLoan {
     private double interestRate;
     private double paymentPerMonth;
     private String purpose;
-    
+    private double numPayments;
     public StudentLoan(){
     }
     
-    public StudentLoan(String studentID, double totalAmount, double numYrsToPay, double interestRate, double paymentPerMonth, String purpose) {
+    public StudentLoan(String studentID, double totalAmount, double numYrsToPay, double interestRate, double paymentPerMonth, String purpose, double numPayments) {
         this.studentID = studentID;
         this.totalAmount = totalAmount;
         this.numYrsToPay = numYrsToPay;
         this.interestRate = interestRate;
         this.paymentPerMonth = paymentPerMonth;
-        this.purpose = purpose;
+        this.purpose = purpose;        
+        this.numPayments = numPayments;
+
+        
+        numPayments = numYrsToPay * 12;
+        paymentPerMonth = totalAmount * (interestRate * Math.pow(1 + interestRate, numPayments)) / (Math.pow(1 + interestRate, numPayments) - 1);
+
     }
 
     public String getStudentID() {
@@ -74,6 +80,14 @@ public class StudentLoan {
 
     public void setPurpose(String purpose) {
         this.purpose = purpose;
+    }
+
+    public double getNumPayments() {
+        return numPayments;
+    }
+
+    public void setNumPayments(double numPayments) {
+        this.numPayments = numPayments;
     }
 
     @Override

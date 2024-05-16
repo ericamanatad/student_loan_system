@@ -25,6 +25,12 @@ public class ConnectionString {
     
     private Connection con = null;
     
+    private List<Student> students;
+    
+    public ConnectionString(){
+        this.students = new ArrayList<>();
+    }
+    
     public static Connection DbConnection(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -36,5 +42,23 @@ public class ConnectionString {
             return null;
         }
     }
-
+    
+    public void addStudent(Student student, Student education, StudentLoan loan){
+        try{
+            JOptionPane.showMessageDialog(null, "addStudent:" + student + education);
+        
+        }
+        
+        
+        catch(Exception ex){
+        JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    public void editStudent(Student student){
+    
+    }
+    public void deactivateStudent(Student student){
+    
+    }
+    
 }

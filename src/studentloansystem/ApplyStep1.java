@@ -514,15 +514,15 @@ private void NextStep1ActionPerformed(java.awt.event.MouseEvent evt) {
          String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
          String address = txtAddress.getText();
          String zipCode = txtZipCode.getText();         
-         String department = txtZipCode.getText();
-         String programEnrolled = txtZipCode.getText();
-         String yearLevel = txtZipCode.getText();
+        // String department = txtZipCode.getText();
+        // String programEnrolled = txtZipCode.getText();
+        // String yearLevel = txtZipCode.getText();
          String guardianFullName = txtFullNameGuardian.getText();
          String guardianRelationship = txtRelationship.getText();
          String guardianContactNumber = txtGuardianPhoneNumber.getText();
          
          Student student = new Student(idNumber, lastName,firstName, middleName, suffix, birthdate, gender,
-                 phoneNumber, emailAddress, nationality, civilStatus, address,zipCode,  department, programEnrolled, yearLevel, guardianFullName, guardianRelationship, guardianContactNumber);
+                 phoneNumber, emailAddress, nationality, civilStatus, address,zipCode, guardianFullName, guardianRelationship, guardianContactNumber);
          ApplyStep2 apply2 = new ApplyStep2(student);
          Student education = new Student();
          StudentLoan loan  = new StudentLoan();
