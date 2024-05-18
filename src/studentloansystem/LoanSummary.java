@@ -70,8 +70,9 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelWhatIsTheFundFor.setText("What is the fund for? : " + loan.getPurpose());
         LabelPaymentPerMonth.setText("Payment per Month: " + loan.getPaymentPerMonth());
         LabelNumberOfPayments.setText("Number of Payments:  " + loan.getNumPayments());
-
-        //LabelNumOfYrsToPay
+        LabelTotalPayment.setText("Total Payment : " + loan.getTotalPayment());
+        
+        
     }
 
     /**
@@ -117,6 +118,7 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelLastName5 = new javax.swing.JLabel();
         LabelPaymentPerMonth = new javax.swing.JLabel();
         LabelNumberOfPayments = new javax.swing.JLabel();
+        LabelTotalPayment = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -279,6 +281,9 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelNumberOfPayments.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelNumberOfPayments.setText("Number of Payments: ");
 
+        LabelTotalPayment.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelTotalPayment.setText("Total Payment : ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -303,7 +308,7 @@ public class LoanSummary extends javax.swing.JFrame {
                             .addComponent(LabelCivilStatus)
                             .addComponent(LabelLastName2)
                             .addComponent(LabelIDNo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LabelLastName1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelProgramEnrolled, javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,8 +327,9 @@ public class LoanSummary extends javax.swing.JFrame {
                     .addComponent(LabelLastName4)
                     .addComponent(LabelLastName5)
                     .addComponent(LabelPaymentPerMonth)
-                    .addComponent(LabelNumberOfPayments))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LabelNumberOfPayments)
+                    .addComponent(LabelTotalPayment))
+                .addContainerGap(113, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
@@ -398,7 +404,9 @@ public class LoanSummary extends javax.swing.JFrame {
                                     .addComponent(LabelProgramEnrolled)
                                     .addComponent(LabelNumberOfPayments))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelYearLevel)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelYearLevel)
+                                    .addComponent(LabelTotalPayment))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelAddress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -422,6 +430,7 @@ public class LoanSummary extends javax.swing.JFrame {
         //--erica
         //instantiate connectionString
         ConnectionString dbOperation = new ConnectionString();
+        //show msgDialog to confirm if done and sure with their inputs
         dbOperation.addStudent(student, education, loan);
         this.dispose();
     }//GEN-LAST:event_SubmitBtnMouseClicked
@@ -451,7 +460,7 @@ public class LoanSummary extends javax.swing.JFrame {
     }//GEN-LAST:event_LabelFullNamePropertyChange
 
     /**
-     * @param args the command line arguments
+     * gender...
      */
        public javax.swing.JLabel getLabelGender() {
         return LabelGender;
@@ -464,7 +473,6 @@ public class LoanSummary extends javax.swing.JFrame {
                 Student education = new Student();
                 StudentLoan loan = new StudentLoan();
                 LoanSummary loanSummary = new LoanSummary(student, education, loan);
-                JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
 
                 //loanSummary.setVisible(true);
             }
@@ -495,6 +503,7 @@ public class LoanSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelProgramEnrolled;
     private javax.swing.JLabel LabelRelationship;
     private javax.swing.JLabel LabelTotalAmountNeeded;
+    private javax.swing.JLabel LabelTotalPayment;
     private javax.swing.JLabel LabelWhatIsTheFundFor;
     private javax.swing.JLabel LabelYearLevel;
     private javax.swing.JLabel LabelZipCode;

@@ -4,22 +4,61 @@
  */
 package studentloansystem;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 /**
  *
  * @author Panewels
  */
 public class Home extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form Home
-     */
+    ConnectionString dbOperation;
     public Home() {
         initComponents();
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI ui = (BasicInternalFrameUI)this.getUI();
         ui.setNorthPane(null);
+        
+        
+            ConnectionString dbOperation = new ConnectionString();
+            int countApplicationsReceived = dbOperation.countTotalApplicants();
+            LabelTotalApplicationsReceived.setText("" + countApplicationsReceived);
+            double amountReceivable = dbOperation.totalAmountReceivable();
+            LabelAmountReceivable.setText("" + amountReceivable);
+            int countOfActiveLoaners = dbOperation.countActiveLoaners();
+            LabelActiveLoaners.setText("" + countOfActiveLoaners);
     }
 
+    public class Main {
+        public static void main(String[] args) {
+            // Create a new JFrame to contain the JDesktopPane
+            JFrame frame = new JFrame();
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+            // Create a new JDesktopPane
+            JDesktopPane desktop = new JDesktopPane();
+
+            // Create a new Home JInternalFrame and add it to the JDesktopPane
+            Home home = new Home();
+            home.setTitle("Home");
+            home.setSize(975, 359);
+            desktop.add(home);
+
+            // Add the JDesktopPane to the JFrame
+            frame.getContentPane().add(desktop);
+
+            // Set the JFrame size and make it visible
+            frame.setSize(1024, 768);
+            frame.setVisible(true);
+
+            // Move the Home JInternalFrame to the center of the JDesktopPane
+            home.setLocation(desktop.getWidth() / 2 - home.getWidth() / 2, desktop.getHeight() / 2 - home.getHeight() / 2);
+            
+        }
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,10 +70,13 @@ public class Home extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        LabelTotalApplicationsReceived = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        LabelActiveLoaners = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        LabelAmountReceivable = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(211, 250, 215));
         setPreferredSize(new java.awt.Dimension(975, 359));
@@ -46,6 +88,11 @@ public class Home extends javax.swing.JInternalFrame {
         jLabel5.setForeground(java.awt.Color.white);
         jLabel5.setText("Total Applications Recieved");
 
+        LabelTotalApplicationsReceived.setBackground(java.awt.Color.white);
+        LabelTotalApplicationsReceived.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        LabelTotalApplicationsReceived.setForeground(java.awt.Color.white);
+        LabelTotalApplicationsReceived.setText("00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -54,13 +101,19 @@ public class Home extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelTotalApplicationsReceived)
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(LabelTotalApplicationsReceived)
+                .addGap(30, 30, 30))
         );
 
         jPanel3.setBackground(new java.awt.Color(65, 109, 25));
@@ -70,6 +123,11 @@ public class Home extends javax.swing.JInternalFrame {
         jLabel6.setForeground(java.awt.Color.white);
         jLabel6.setText("Total Active Loaners");
 
+        LabelActiveLoaners.setBackground(java.awt.Color.white);
+        LabelActiveLoaners.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        LabelActiveLoaners.setForeground(java.awt.Color.white);
+        LabelActiveLoaners.setText("00");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -78,13 +136,19 @@ public class Home extends javax.swing.JInternalFrame {
                 .addGap(42, 42, 42)
                 .addComponent(jLabel6)
                 .addContainerGap(47, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelActiveLoaners)
+                .addGap(100, 100, 100))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(LabelActiveLoaners)
+                .addGap(31, 31, 31))
         );
 
         jPanel4.setBackground(new java.awt.Color(65, 109, 25));
@@ -94,6 +158,11 @@ public class Home extends javax.swing.JInternalFrame {
         jLabel7.setForeground(java.awt.Color.white);
         jLabel7.setText("Total Amount Recievable");
 
+        LabelAmountReceivable.setBackground(java.awt.Color.white);
+        LabelAmountReceivable.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 36)); // NOI18N
+        LabelAmountReceivable.setForeground(java.awt.Color.white);
+        LabelAmountReceivable.setText("000 000");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -102,13 +171,19 @@ public class Home extends javax.swing.JInternalFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jLabel7)
                 .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelAmountReceivable)
+                .addGap(61, 61, 61))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(LabelAmountReceivable)
+                .addGap(34, 34, 34))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,6 +215,9 @@ public class Home extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LabelActiveLoaners;
+    private javax.swing.JLabel LabelAmountReceivable;
+    private javax.swing.JLabel LabelTotalApplicationsReceived;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

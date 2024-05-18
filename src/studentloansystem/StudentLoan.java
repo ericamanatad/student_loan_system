@@ -8,7 +8,7 @@ package studentloansystem;
  *
  * @author edlution
  */
-public class StudentLoan {
+public class StudentLoan  extends Student {
     private String studentID;
     private double totalAmount;
     private double numYrsToPay;
@@ -16,10 +16,11 @@ public class StudentLoan {
     private double paymentPerMonth;
     private String purpose;
     private double numPayments;
+    private double totalPayment;
     public StudentLoan(){
     }
     
-    public StudentLoan(String studentID, double totalAmount, double numYrsToPay, double interestRate, double paymentPerMonth, String purpose, double numPayments) {
+    public StudentLoan(String studentID, double totalAmount, double numYrsToPay, double interestRate, double paymentPerMonth, String purpose, double numPayments, double totalPayment) {
         this.studentID = studentID;
         this.totalAmount = totalAmount;
         this.numYrsToPay = numYrsToPay;
@@ -27,11 +28,12 @@ public class StudentLoan {
         this.paymentPerMonth = paymentPerMonth;
         this.purpose = purpose;        
         this.numPayments = numPayments;
+        this.totalPayment = totalPayment;
 
         
         numPayments = numYrsToPay * 12;
         paymentPerMonth = totalAmount * (interestRate * Math.pow(1 + interestRate, numPayments)) / (Math.pow(1 + interestRate, numPayments) - 1);
-
+        totalPayment = numPayments * paymentPerMonth;
     }
 
     public String getStudentID() {
@@ -90,6 +92,15 @@ public class StudentLoan {
         this.numPayments = numPayments;
     }
 
+    public double getTotalPayment() {
+        return totalPayment;
+    }
+
+    public void setTotalPayment(double totalPayment) {
+        this.totalPayment = totalPayment;
+    }
+
+    
     @Override
     public String toString() {
         return "StudentLoan{" + "studentID=" + studentID 

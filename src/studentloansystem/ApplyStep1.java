@@ -158,7 +158,7 @@ public class ApplyStep1 extends javax.swing.JFrame {
         jLabel8.setText("Student ID No.:");
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
-        jLabel9.setText("Birthdate:");
+        jLabel9.setText("Birthdate[yyyy-mm-dd]:");
 
         comboBoxGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Others", "Rather not say" }));
         comboBoxGender.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -498,37 +498,59 @@ private void NextStep1ActionPerformed(java.awt.event.MouseEvent evt) {
 
 }
     private void NextStep1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextStep1MouseClicked
-         // TODO add your handling code here:
-         //get the student details input
-         String idNumber = txtStudentId.getText();
-         String lastName = txtLastName.getText();
-         String firstName = txtFirstName.getText();
-             String middleName = txtMiddleName.getText();
-         String suffix = (String) comboBoxSuffix.getSelectedItem();
-         //formatted birthdate
-         String birthdate = jFormattedTextFieldBirthdate.getText();
-         String gender = (String) comboBoxGender.getSelectedItem();
-         String phoneNumber = txtPhoneNumber.getText();
-         String emailAddress = txtEmailAddress.getText();
-         String nationality = txtNationality.getText();
-         String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
-         String address = txtAddress.getText();
-         String zipCode = txtZipCode.getText();         
-        // String department = txtZipCode.getText();
-        // String programEnrolled = txtZipCode.getText();
-        // String yearLevel = txtZipCode.getText();
-         String guardianFullName = txtFullNameGuardian.getText();
-         String guardianRelationship = txtRelationship.getText();
-         String guardianContactNumber = txtGuardianPhoneNumber.getText();
-         
-         Student student = new Student(idNumber, lastName,firstName, middleName, suffix, birthdate, gender,
-                 phoneNumber, emailAddress, nationality, civilStatus, address,zipCode, guardianFullName, guardianRelationship, guardianContactNumber);
-         ApplyStep2 apply2 = new ApplyStep2(student);
-         Student education = new Student();
-         StudentLoan loan  = new StudentLoan();
-         LoanSummary loanSummary = new LoanSummary(student, education, loan);
-         apply2.setVisible(true);
-         this.dispose();
+
+        try{
+                //get the student details input
+                String idNumber = txtStudentId.getText();
+                String lastName = txtLastName.getText();
+                String firstName = txtFirstName.getText();
+                String middleName = txtMiddleName.getText();
+                String suffix = (String) comboBoxSuffix.getSelectedItem();
+                //formatted birthdate
+                String birthdate = jFormattedTextFieldBirthdate.getText();
+                String gender = (String) comboBoxGender.getSelectedItem();
+                String phoneNumber = txtPhoneNumber.getText();
+                String emailAddress = txtEmailAddress.getText();
+                String nationality = txtNationality.getText();
+                String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
+                String address = txtAddress.getText();
+                String zipCode = txtZipCode.getText();         
+               // String department = txtZipCode.getText();
+               // String programEnrolled = txtZipCode.getText();
+               // String yearLevel = txtZipCode.getText();
+                String guardianFullName = txtFullNameGuardian.getText();
+                String guardianRelationship = txtRelationship.getText();
+                String guardianContactNumber = txtGuardianPhoneNumber.getText();
+                
+                // Check if all fields are filled up
+                if (idNumber.isEmpty() || lastName.isEmpty() || firstName.isEmpty() || gender.isEmpty() || phoneNumber.isEmpty() || 
+                emailAddress.isEmpty() || nationality.isEmpty() ||civilStatus.isEmpty() || address.isEmpty() || zipCode.isEmpty() ||
+                guardianFullName.isEmpty() || guardianRelationship.isEmpty() || guardianContactNumber.isEmpty()) {
+                    
+                    JOptionPane.showMessageDialog(null, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                    
+                } else { 
+                    int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to submit? Please check before proceeding to the next page.", "Confirm Submission", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                    if (option == JOptionPane.YES_OPTION) { 
+                        Student student = new Student(idNumber, lastName,firstName, middleName, suffix, birthdate, gender,
+                        phoneNumber, emailAddress, nationality, civilStatus, address,zipCode, guardianFullName, guardianRelationship, guardianContactNumber);
+                        ApplyStep2 apply2 = new ApplyStep2(student);
+                        Student education = new Student();
+                        StudentLoan loan  = new StudentLoan();
+                        LoanSummary loanSummary = new LoanSummary(student, education, loan);
+                        apply2.setVisible(true);
+                        this.dispose();
+                    } else {
+                        // User clicked "Cancel", so do not submit the form
+                    }
+                }
+
+               
+            
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }//GEN-LAST:event_NextStep1MouseClicked
 
     private void NextStep1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextStep1MouseEntered

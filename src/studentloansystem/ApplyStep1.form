@@ -456,7 +456,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Yu Gothic UI" size="16" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Birthdate:"/>
+            <Property name="text" type="java.lang.String" value="Birthdate[yyyy-mm-dd]:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboBoxGender">

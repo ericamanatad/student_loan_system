@@ -63,7 +63,7 @@ public class StudentCode extends javax.swing.JFrame {
         jTrackBtn = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TxtLAC = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jApplyBtn = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -145,6 +145,9 @@ public class StudentCode extends javax.swing.JFrame {
 
         jTrackBtn.setBackground(new java.awt.Color(65, 109, 25));
         jTrackBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTrackBtnMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jTrackBtnMouseEntered(evt);
             }
@@ -183,10 +186,10 @@ public class StudentCode extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 16)); // NOI18N
         jLabel9.setText("Loan Application Code (LAC):");
 
-        jTextField2.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(65, 109, 25));
-        jTextField2.setAlignmentY(1.0F);
-        jTextField2.setBorder(null);
+        TxtLAC.setFont(new java.awt.Font("DialogInput", 1, 24)); // NOI18N
+        TxtLAC.setForeground(new java.awt.Color(65, 109, 25));
+        TxtLAC.setAlignmentY(1.0F);
+        TxtLAC.setBorder(null);
 
         jLabel13.setText("jLabel13");
         jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -265,7 +268,7 @@ public class StudentCode extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TxtLAC, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jLabel9))
                                 .addGap(59, 59, 59))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -294,7 +297,7 @@ public class StudentCode extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtLAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
@@ -370,6 +373,27 @@ public class StudentCode extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jApplyBtnMouseClicked
 
+    private void jTrackBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTrackBtnMouseClicked
+        try{
+            //LAC - Loan Application Code
+            int inputLAC = Integer.parseInt(TxtLAC.getText());
+            ConnectionString dbConnect = new ConnectionString();
+            boolean status = dbConnect.checkLAC(inputLAC);
+
+            if (status == true){
+                JOptionPane.showMessageDialog(null, inputLAC + " exists in loan system database!");
+                Student student = new Student();
+                StudentLoanStatus loanStatus = new StudentLoanStatus(inputLAC, student);
+                loanStatus.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(null, inputLAC + " does not exist in loan system database!");
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Loan Application Code does not exist. " + ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_jTrackBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -407,6 +431,7 @@ public class StudentCode extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Right;
+    private javax.swing.JTextField TxtLAC;
     private javax.swing.JLabel jAdminbtn;
     private javax.swing.JLabel jApplyBtn;
     private javax.swing.JLabel jLabel1;
@@ -425,7 +450,6 @@ public class StudentCode extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel jStudentbtn;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel jTrackBtn;
     // End of variables declaration//GEN-END:variables
 }
