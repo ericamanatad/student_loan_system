@@ -254,7 +254,5 @@ public class ConnectionString {
             JOptionPane.showMessageDialog(null, "Error countActiveLoaners() :  " + ex.getMessage());
         }
         return countActiveLoaners;
-    }
-        
-        
+    }   
 }
