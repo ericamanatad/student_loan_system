@@ -201,7 +201,7 @@ public class ConnectionString {
     
     public int countTotalApplicants(){
         int totalApplicants = 0;
-        String queryCountTotalApplicants = "SELECT COUNT(*) AS count_active_students FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;";
+        String queryCountTotalApplicants = "SELECT COUNT(*) AS count_active_students FROM student_table s JOIN loan_table l ON s.id = l.student_id;";
         try{
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
             PreparedStatement psCountApplicants = conn.prepareStatement(queryCountTotalApplicants);
@@ -221,7 +221,8 @@ public class ConnectionString {
     //
     public double totalAmountReceivable(){
         double totalAmountReceivable = 0;
-        String queryComputeAmountReceivable = "SELECT SUM(ROUND(total_payment, 2)) AS total_amount_receivable FROM loan_table;";
+        String queryComputeAmountReceivable = "SELECT SUM(ROUND(total_payment, 2)) AS total_amount_receivable FROM loan_table l\n"
+        		+ "JOIN student_table s ON s.id = l.student_id WHERE is_active =1;";
         try{
            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
             PreparedStatement psCountApplicants = conn.prepareStatement(queryComputeAmountReceivable);

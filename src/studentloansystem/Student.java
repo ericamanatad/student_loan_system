@@ -12,8 +12,8 @@ package studentloansystem;
 
 public class Student {
     private String idNumber;    
-    private String firstName;
     private String lastName;
+    private String firstName;
     private String middleName;
     private String suffix;
     private String birthdate;
@@ -67,10 +67,10 @@ public class Student {
         this.yearLevel = yearLevel;
     }
 
-    public Student(String idNumber, String firstName, String lastName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode, String guardianFullName, String guardianRelationship, String guardianContactNumber) {
+    public Student(String idNumber, String lastName, String firstName, String middleName, String suffix, String birthdate, String gender, String phoneNumber, String emailAddress, String nationality, String civilStatus, String address, String zipCode, String guardianFullName, String guardianRelationship, String guardianContactNumber) {
         this.idNumber = idNumber;
-        this.firstName = firstName;
         this.lastName = lastName;
+        this.firstName = firstName;
         this.middleName = middleName;
         this.suffix = suffix;
         this.birthdate = birthdate;

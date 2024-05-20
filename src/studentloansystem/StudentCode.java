@@ -391,7 +391,7 @@ public class StudentCode extends javax.swing.JFrame {
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Loan Application Code does not exist. " + ex.getMessage());
         }
-        
+        TxtLAC.setText("");
     }//GEN-LAST:event_jTrackBtnMouseClicked
 
     /**
