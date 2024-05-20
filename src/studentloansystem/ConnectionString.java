@@ -258,7 +258,8 @@ public class ConnectionString {
         return countActiveLoaners;
     }   
      //   SELECT s.* FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;
-     public String[] viewLoanApplications(){
+    /*
+     *  public String[] viewLoanApplications(){
         String[] tbData =  new String[4];
         String fn, mn, ln, studentName;Double amount;boolean status;int loanID;
         String queryViewLoanApplications = "SELECT l.id, l.amount , s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;";
@@ -287,24 +288,34 @@ public class ConnectionString {
         
         return tbData;
     }   
-     /*
-     String[] codeAndTimestamp = new String[2];
-        
-        String queryViewSLcodeAndTimestamp = "SELECT id, created_on FROM loan_table WHERE student_id = ?";
-        try (
-             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
-             PreparedStatement psSLCodeTimestamp = conn.prepareStatement(queryViewSLcodeAndTimestamp)) {
-            
-            psSLCodeTimestamp.setString(1, student.getIdNumber());
-            ResultSet rs = psSLCodeTimestamp.executeQuery();
-
-            if (rs.next()) {
-                codeAndTimestamp[0] = rs.getString("id");
-                codeAndTimestamp[1] = rs.getString("created_on");
-            } else {
-                codeAndTimestamp[0] = "No SL Code found for this student.";
-                codeAndTimestamp[1]  = "";
-            }
-            rs.close();
+    
      */
+        public List<String[]> viewLoanApplications() {
+            List<String[]> loanApplications = new ArrayList<>();
+            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;";
+            try {
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                PreparedStatement psViewLoanApplications = conn.prepareStatement(queryViewLoanApplications);
+                ResultSet rs = psViewLoanApplications.executeQuery();
+                while (rs.next()) {
+                    String[] tbData = new String[4];
+                    tbData[0] = String.valueOf(rs.getInt("l.id"));
+                    String fn = rs.getString("s.first_name");
+                    String mn = rs.getString("s.middle_name");
+                    String ln = rs.getString("s.last_name");
+                    String studentName = fn + " " + mn + " " + ln;
+                    tbData[1] = studentName;
+                    tbData[2] = String.valueOf(rs.getDouble("l.amount"));
+                    tbData[3] = String.valueOf(rs.getBoolean("s.is_active"));
+                    loanApplications.add(tbData);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error viewLoanApplications() :  " + ex.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return loanApplications;
+        }
+        
+     
 }

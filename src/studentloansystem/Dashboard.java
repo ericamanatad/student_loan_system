@@ -276,6 +276,10 @@ public class Dashboard extends javax.swing.JFrame {
         Home hm = new Home();
         DesktopPanel.removeAll();
         DesktopPanel.add(hm).setVisible(true);
+       // LoanApplications application = new LoanApplications();
+        //DesktopPanel.removeAll();
+       // DesktopPanel.add(application).setVisible(false);
+
     }//GEN-LAST:event_HomeBtnMouseClicked
 
     private void ApplicationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplicationBtnMouseClicked
@@ -283,6 +287,9 @@ public class Dashboard extends javax.swing.JFrame {
         LoanApplications application = new LoanApplications();
         DesktopPanel.removeAll();
         DesktopPanel.add(application).setVisible(true);
+        //Home hm = new Home();
+       // DesktopPanel.removeAll();
+        //DesktopPanel.add(hm).setVisible(false);
     }//GEN-LAST:event_ApplicationBtnMouseClicked
 
     /**

@@ -9,11 +9,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.GroupLayout;
 
 /**
  *
@@ -77,12 +81,28 @@ public class LoanApplications extends javax.swing.JInternalFrame {
         JTableLoanApplications = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(211, 250, 215));
+        
+        ConnectionString dbOperation = new ConnectionString();
+        List<String[]> applicationRecords = dbOperation.viewLoanApplications();
+        //JOptionPane.showMessageDialog(null, applicationRecords);
+        
+        DefaultTableModel model = new DefaultTableModel(new Object[][]{}, new String[]{"LACode", "Name", "Amount", "Action"});
 
-        JTableLoanApplications.setModel(new javax.swing.table.DefaultTableModel(
+        for (String[] applicationRecord : applicationRecords) {
+            model.addRow(applicationRecord);
+        }
+        
+        JTableLoanApplications.setModel(model);
+
+
+        
+        
+/*
+ *         JTableLoanApplications.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
+                {1111, "Erica Sample", 12300.02, null},
+                {1111, "Erica Sample", 12300.02, null},
+                {applicationRecords[0], applicationRecords[1],applicationRecords[2], applicationRecords[3]},
                 {null, null, null, null}
             },
             new String [] {
@@ -104,25 +124,26 @@ public class LoanApplications extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+ */
         JTableLoanApplications.setColumnSelectionAllowed(true);
         jScrollPane1.setViewportView(JTableLoanApplications);
         JTableLoanApplications.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(Alignment.TRAILING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jScrollPane1, GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+        			.addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 401, GroupLayout.PREFERRED_SIZE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
