@@ -280,7 +280,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void ApplicationBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ApplicationBtnMouseClicked
         // TODO add your handling code here:
-        Application application = new Application();
+        LoanApplications application = new LoanApplications();
         DesktopPanel.removeAll();
         DesktopPanel.add(application).setVisible(true);
     }//GEN-LAST:event_ApplicationBtnMouseClicked

@@ -144,7 +144,7 @@
                                   <Component id="comboBoxProgramEnrolled" alignment="0" pref="381" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="540" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="panelCheckBoxes" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -169,7 +169,7 @@
               </Group>
               <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="668" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="485" max="-2" attributes="0"/>
                   <Component id="SubmitBtn" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
@@ -235,13 +235,13 @@
                                   <Component id="panelCheckBoxes" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="479" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+                          <Component id="SubmitBtn" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="246" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-                          <Component id="SubmitBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
