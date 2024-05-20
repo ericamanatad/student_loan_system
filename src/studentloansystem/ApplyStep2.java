@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package studentloansystem;
-import java.util.Scanner;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.awt.Component;
 import javax.swing.JCheckBox;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -27,12 +25,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
         panDefault = new Color(65,109,25);
         panClick = new Color(141, 236, 180);
         panEnter = new Color(65, 176, 110);
-        
-        
     }
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -466,7 +459,6 @@ public class ApplyStep2 extends javax.swing.JFrame {
         double totalPayment = 0;
         monthlyPayment = amountToLoan * (interestRate * Math.pow(1 + interestRate, numPayments)) / (Math.pow(1 + interestRate, numPayments) - 1);
         totalPayment = numPayments * monthlyPayment;
-
         
         String purpose;
         StringBuilder chosenItemInPanel = new StringBuilder();

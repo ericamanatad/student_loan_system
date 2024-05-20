@@ -125,7 +125,7 @@ public class ConnectionString {
         try (
              Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
              PreparedStatement psSLCodeTimestamp = conn.prepareStatement(queryViewSLcodeAndTimestamp)) {
-
+            
             psSLCodeTimestamp.setString(1, student.getIdNumber());
             ResultSet rs = psSLCodeTimestamp.executeQuery();
 
@@ -217,6 +217,7 @@ public class ConnectionString {
         return totalApplicants;
     }
     
+    //
     public double totalAmountReceivable(){
         double totalAmountReceivable = 0;
         String queryComputeAmountReceivable = "SELECT SUM(ROUND(total_payment, 2)) AS total_amount_receivable FROM loan_table;";
@@ -254,4 +255,6 @@ public class ConnectionString {
         }
         return countActiveLoaners;
     }
+        
+        
 }

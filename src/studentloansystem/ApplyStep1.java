@@ -6,6 +6,8 @@ package studentloansystem;
 
 import java.awt.Color;
 import com.toedter.calendar.JDateChooser;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 /**
@@ -499,58 +501,105 @@ private void NextStep1ActionPerformed(java.awt.event.MouseEvent evt) {
 }
     private void NextStep1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextStep1MouseClicked
 
-        try{
-                //get the student details input
-                String idNumber = txtStudentId.getText();
-                String lastName = txtLastName.getText();
-                String firstName = txtFirstName.getText();
-                String middleName = txtMiddleName.getText();
-                String suffix = (String) comboBoxSuffix.getSelectedItem();
-                //formatted birthdate
-                String birthdate = jFormattedTextFieldBirthdate.getText();
-                String gender = (String) comboBoxGender.getSelectedItem();
-                String phoneNumber = txtPhoneNumber.getText();
-                String emailAddress = txtEmailAddress.getText();
-                String nationality = txtNationality.getText();
-                String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
-                String address = txtAddress.getText();
-                String zipCode = txtZipCode.getText();         
-               // String department = txtZipCode.getText();
-               // String programEnrolled = txtZipCode.getText();
-               // String yearLevel = txtZipCode.getText();
-                String guardianFullName = txtFullNameGuardian.getText();
-                String guardianRelationship = txtRelationship.getText();
-                String guardianContactNumber = txtGuardianPhoneNumber.getText();
-                
-                // Check if all fields are filled up
-                if (idNumber.isEmpty() || lastName.isEmpty() || firstName.isEmpty() || gender.isEmpty() || phoneNumber.isEmpty() || 
-                emailAddress.isEmpty() || nationality.isEmpty() ||civilStatus.isEmpty() || address.isEmpty() || zipCode.isEmpty() ||
-                guardianFullName.isEmpty() || guardianRelationship.isEmpty() || guardianContactNumber.isEmpty()) {
-                    
-                    JOptionPane.showMessageDialog(null, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
-                    
-                } else { 
-                    int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to submit? Please check before proceeding to the next page.", "Confirm Submission", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-                    if (option == JOptionPane.YES_OPTION) { 
-                        Student student = new Student(idNumber, lastName,firstName, middleName, suffix, birthdate, gender,
-                        phoneNumber, emailAddress, nationality, civilStatus, address,zipCode, guardianFullName, guardianRelationship, guardianContactNumber);
-                        ApplyStep2 apply2 = new ApplyStep2(student);
-                        Student education = new Student();
-                        StudentLoan loan  = new StudentLoan();
-                        LoanSummary loanSummary = new LoanSummary(student, education, loan);
-                        apply2.setVisible(true);
-                        this.dispose();
-                    } else {
-                        // User clicked "Cancel", so do not submit the form
-                    }
-                }
-
-               
+    try {
+        // Get the student details input
+        String idNumber = txtStudentId.getText();
+        String lastName = txtLastName.getText();
+        String firstName = txtFirstName.getText();
+        String middleName = txtMiddleName.getText();
+        String suffix = (String) comboBoxSuffix.getSelectedItem();
+        // Formatted birthdate
+        String birthdate = jFormattedTextFieldBirthdate.getText();
+        String gender = (String) comboBoxGender.getSelectedItem();
+        String phoneNumber = txtPhoneNumber.getText();
+        String emailAddress = txtEmailAddress.getText();
+        String nationality = txtNationality.getText();
+        String civilStatus = (String) comboBoxCivilStatus.getSelectedItem();
+        String address = txtAddress.getText();
+        String zipCode = txtZipCode.getText();         
+        String guardianFullName = txtFullNameGuardian.getText();
+        String guardianRelationship = txtRelationship.getText();
+        String guardianContactNumber = txtGuardianPhoneNumber.getText();
+        
+        // Check if all fields are filled up
+        if (idNumber.isEmpty() || lastName.isEmpty() || firstName.isEmpty() || gender.isEmpty() || phoneNumber.isEmpty() || 
+            emailAddress.isEmpty() || nationality.isEmpty() || civilStatus.isEmpty() || address.isEmpty() || zipCode.isEmpty() ||
+            guardianFullName.isEmpty() || guardianRelationship.isEmpty() || guardianContactNumber.isEmpty()) {
             
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Please fill up all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            
+//        } else {
+//            // Validate middleName format
+//            if (!middleName.matches("[A-Za-z]\\.")) {
+//                if (middleName.length() > 0) {
+//                    middleName = middleName.substring(0, 1).toUpperCase() + ".";
+//                    txtMiddleName.setText(middleName);
+//                }
+//            }
+//            
+//            // Validate idNumber format
+//            if (!idNumber.matches("\\d{3}-\\d{5}")) {
+//                JOptionPane.showMessageDialog(null, "ID number must be in the format 'xxx-xxxxx' and contain only numbers.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            
+//            // Validate birthdate format
+//            if (!birthdate.matches("\\d{4}-\\d{2}-\\d{2}")) {
+//                JOptionPane.showMessageDialog(null, "Input valid birthdate.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            
+//            // Validate birthdate is not in the future
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            dateFormat.setLenient(false);
+//            Date dateOfBirth;
+//            try {
+//                dateOfBirth = dateFormat.parse(birthdate);
+//                Date currentDate = new Date();
+//                if (dateOfBirth.after(currentDate)) {
+//                    JOptionPane.showMessageDialog(null, "Birthdate must not be in the future.", "Error", JOptionPane.ERROR_MESSAGE);
+//                    return;
+//                }
+//            } catch (ParseException e) {
+//                JOptionPane.showMessageDialog(null, "Invalid birthdate format.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            if (!phoneNumber.matches("09\\d{9}")) {
+//                JOptionPane.showMessageDialog(null, "Input a valid phone number", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            
+//            // Validate emailAddress contains '@' and ends with '.com'
+//            if (!emailAddress.matches("^[\\w\\.-]+@[\\w\\.-]+\\.com$")) {
+//                JOptionPane.showMessageDialog(null, "Input a valid email address.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+//            
+//            //Validate guardianContactNumber
+//            if (!guardianContactNumber.matches("09\\d{9}")) {
+//                JOptionPane.showMessageDialog(null, "Guardian contact number must be in the format '09xxxxxxxxx' and contain only numbers.", "Error", JOptionPane.ERROR_MESSAGE);
+//                return;
+//            }
+            
+            int option = JOptionPane.showConfirmDialog(null, "Are you sure you want to submit? Please check before proceeding to the next page.", "Confirm Submission", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            if (option == JOptionPane.YES_OPTION) { 
+                Student student = new Student(idNumber, lastName, firstName, middleName, suffix, birthdate, gender,
+                phoneNumber, emailAddress, nationality, civilStatus, address, zipCode, guardianFullName, guardianRelationship, guardianContactNumber);
+                ApplyStep2 apply2 = new ApplyStep2(student);
+                Student education = new Student();
+                StudentLoan loan  = new StudentLoan();
+                LoanSummary loanSummary = new LoanSummary(student, education, loan);
+                apply2.setVisible(true);
+                this.dispose();
+            } else {
+                // User clicked "Cancel", so do not submit the form
+            }
         }
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(null, ex.getMessage());
+    }
     }//GEN-LAST:event_NextStep1MouseClicked
 
     private void NextStep1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextStep1MouseEntered

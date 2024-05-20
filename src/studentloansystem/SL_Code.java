@@ -5,7 +5,6 @@
 package studentloansystem;
 
 import java.awt.Color;
-import java.util.Date;
 
 /**
  *
@@ -20,6 +19,9 @@ public class SL_Code extends javax.swing.JFrame {
     Color panDefault, panClick, panEnter;
     public SL_Code() {
         initComponents();
+        panDefault = new Color(65,109,25);
+        panClick = new Color(141, 236, 180);
+        panEnter = new Color(65, 176, 110);
     }
 
     public SL_Code(Student student, StudentLoan loan){
@@ -135,16 +137,16 @@ public class SL_Code extends javax.swing.JFrame {
         OKBtnLayout.setHorizontalGroup(
             OKBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(OKBtnLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel22)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         OKBtnLayout.setVerticalGroup(
             OKBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OKBtnLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+            .addGroup(OKBtnLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
                 .addComponent(jLabel22)
-                .addContainerGap())
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         LabelStudentName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
@@ -191,7 +193,7 @@ public class SL_Code extends javax.swing.JFrame {
                         .addGap(189, 189, 189))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(OKBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
+                        .addGap(74, 74, 74))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(102, 102, 102)
@@ -220,9 +222,9 @@ public class SL_Code extends javax.swing.JFrame {
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(OKBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                        .addGap(39, 39, 39))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(122, 122, 122)

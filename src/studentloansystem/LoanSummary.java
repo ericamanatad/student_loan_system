@@ -5,6 +5,7 @@
 package studentloansystem;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 
@@ -48,6 +49,15 @@ public class LoanSummary extends javax.swing.JFrame {
         //Tiwas ari EKAAAAIIIIII
         //============================================================================//
        // JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
+       
+       String dfMonthlyPayment;
+       String dfTotalPayment;
+        DecimalFormat df = new DecimalFormat("#.00");
+        double paymentMonthly = loan.getPaymentPerMonth();
+        double totalPayment = loan.getTotalPayment();
+        dfMonthlyPayment = df.format(paymentMonthly);
+        dfTotalPayment = df.format(totalPayment);
+        
         LabelIDNo.setText("Student ID No: " + student.getIdNumber());
         LabelFullName.setText("FullName: " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName());
         LabelBirthdate.setText("Birthdate: " + student.getBirthdate());
@@ -68,9 +78,9 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelNumOfYrsToPay.setText("Number of years to pay: " + loan.getNumYrsToPay());
         LabelInterestRate.setText("Interest Rate : " + loan.getInterestRate());
         LabelWhatIsTheFundFor.setText("What is the fund for? : " + loan.getPurpose());
-        LabelPaymentPerMonth.setText("Payment per Month: " + loan.getPaymentPerMonth());
+        LabelPaymentPerMonth.setText("Payment per Month: " + dfMonthlyPayment);
         LabelNumberOfPayments.setText("Number of Payments:  " + loan.getNumPayments());
-        LabelTotalPayment.setText("Total Payment : " + loan.getTotalPayment());
+        LabelTotalPayment.setText("Total Payment : " + dfTotalPayment);
         
         
     }
@@ -124,7 +134,6 @@ public class LoanSummary extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1163, 628));
 
         jPanel2.setBackground(new java.awt.Color(65, 109, 25));
 
@@ -132,7 +141,7 @@ public class LoanSummary extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 914, Short.MAX_VALUE)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +317,7 @@ public class LoanSummary extends javax.swing.JFrame {
                             .addComponent(LabelCivilStatus)
                             .addComponent(LabelLastName2)
                             .addComponent(LabelIDNo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LabelLastName1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelProgramEnrolled, javax.swing.GroupLayout.Alignment.LEADING)
