@@ -292,7 +292,7 @@ public class ConnectionString {
      */
         public List<String[]> viewLoanApplications() {
             List<String[]> loanApplications = new ArrayList<>();
-            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;";
+            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 0;";
             try {
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
                 PreparedStatement psViewLoanApplications = conn.prepareStatement(queryViewLoanApplications);
