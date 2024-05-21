@@ -292,21 +292,25 @@ public class ConnectionString {
      */
         public List<String[]> viewLoanApplications() {
             List<String[]> loanApplications = new ArrayList<>();
-            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 0;";
+            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active, l.created_on FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 0;";
             try {
+                // Update connection string with your database credentials
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
                 PreparedStatement psViewLoanApplications = conn.prepareStatement(queryViewLoanApplications);
                 ResultSet rs = psViewLoanApplications.executeQuery();
                 while (rs.next()) {
-                    String[] tbData = new String[4];
-                    tbData[0] = String.valueOf(rs.getInt("l.id"));
+                    String[] tbData = new String[6]; // Increase array size to accommodate the created_on field
+                    tbData[0] = "SL" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
                     String fn = rs.getString("s.first_name");
                     String mn = rs.getString("s.middle_name");
                     String ln = rs.getString("s.last_name");
                     String studentName = fn + " " + mn + " " + ln;
                     tbData[1] = studentName;
                     tbData[2] = String.valueOf(rs.getDouble("l.amount"));
-                    tbData[3] = String.valueOf(rs.getBoolean("s.is_active"));
+                    tbData[3] = rs.getString("s.is_active"); // Store as a String
+                    // Format timestamp to string for display
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    tbData[4] = dateFormat.format(rs.getTimestamp("l.created_on")); // Add created_on timestamp
                     loanApplications.add(tbData);
                 }
             } catch (SQLException ex) {
@@ -316,6 +320,5 @@ public class ConnectionString {
             }
             return loanApplications;
         }
-        
-     
+
 }

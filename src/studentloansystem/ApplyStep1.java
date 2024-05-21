@@ -5,7 +5,6 @@
 package studentloansystem;
 
 import java.awt.Color;
-import com.toedter.calendar.JDateChooser;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
