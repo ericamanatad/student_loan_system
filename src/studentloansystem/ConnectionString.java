@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -163,6 +164,7 @@ public class ConnectionString {
                 status = false;
             }
             psCheckLAC.close();
+            conn.close();
             rs.close();
             
         }catch(Exception ex){
@@ -192,6 +194,9 @@ public class ConnectionString {
                 studentName = firstName + " " + midName + " " + lastName;
             }
         
+             psSelectStudentName.close();
+             conn.close();
+             rs.close();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Error getting student name : " + ex.getMessage());
         }
@@ -211,6 +216,9 @@ public class ConnectionString {
             if(rs.next()){
                 totalApplicants = rs.getInt("count_active_students");
             }
+             psCountApplicants.close();
+             conn.close();
+             rs.close();
             
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Error countTotalApplicants() :  " + ex.getMessage());
@@ -225,16 +233,17 @@ public class ConnectionString {
         		+ "JOIN student_table s ON s.id = l.student_id WHERE is_active =1;";
         try{
            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
-            PreparedStatement psCountApplicants = conn.prepareStatement(queryComputeAmountReceivable);
-            ResultSet rs = psCountApplicants.executeQuery();
+            PreparedStatement psTotalAmountReceivable = conn.prepareStatement(queryComputeAmountReceivable);
+            ResultSet rs = psTotalAmountReceivable.executeQuery();
             
             if(rs.next()){
                 totalAmountReceivable = rs.getDouble("total_amount_receivable");
             }
-            
+             psTotalAmountReceivable.close();
+             conn.close();
+             rs.close();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Error totalAmountReceivable() :  " + ex.getMessage());
-
+                JOptionPane.showMessageDialog(null, "Error totalAmountReceivable() :  " + ex.getMessage());
         }
         return totalAmountReceivable;
     }
@@ -252,44 +261,17 @@ public class ConnectionString {
                 countActiveLoaners = rs.getInt("count_active_loaners");
             }
             
+                    psCountApplicants.close();
+                    conn.close();
+                    rs.close();
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null, "Error countActiveLoaners() :  " + ex.getMessage());
         }
         return countActiveLoaners;
     }   
-     //   SELECT s.* FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;
-    /*
-     *  public String[] viewLoanApplications(){
-        String[] tbData =  new String[4];
-        String fn, mn, ln, studentName;Double amount;boolean status;int loanID;
-        String queryViewLoanApplications = "SELECT l.id, l.amount , s.last_name, s.first_name, s.middle_name, s.is_active FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 1;";
-        try{
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
-            PreparedStatement psViewLoanApplications = conn.prepareStatement(queryViewLoanApplications);
-            
-            
-           ResultSet rs = psViewLoanApplications.executeQuery();
-            if(rs.next()){
-                tbData[0] = String.valueOf(rs.getInt("l.id"));
-                fn = rs.getString("s.first_name");
-                mn = rs.getString("s.middle_name");
-                ln = rs.getString("s.last_name");
-                studentName = fn + " " + mn + " " + ln;
-                tbData[1] = studentName;
-                tbData[2]= String.valueOf(rs.getDouble("l.amount"));
-                tbData[3] = String.valueOf(rs.getBoolean("s.is_active"));
-            }
-            
-        }catch(SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error viewLoanApplications() :  " + ex.getMessage());
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-        
-        return tbData;
-    }   
+ 
     
-     */
+     
         public List<String[]> viewLoanApplications() {
             List<String[]> loanApplications = new ArrayList<>();
             String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active, l.created_on FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 0;";
@@ -312,6 +294,10 @@ public class ConnectionString {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     tbData[4] = dateFormat.format(rs.getTimestamp("l.created_on")); // Add created_on timestamp
                     loanApplications.add(tbData);
+                    
+                    psViewLoanApplications.close();
+                    conn.close();
+                    rs.close();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Error viewLoanApplications() :  " + ex.getMessage());
@@ -321,57 +307,105 @@ public class ConnectionString {
             return loanApplications;
         }
         
-//        public StudentLoan getApplicantSummaryData(String loanID) {
-//        StudentLoan loan = null;
-//        // Query to retrieve loan and student data based on loan ID
-//        String query = "SELECT s.*, e.*, l.* FROM student_table s " +
-//                       "JOIN education_table e ON s.id = e.student_id " +
-//                       "JOIN loan_table l ON s.id = l.student_id WHERE l.id = ?";
-//        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
-//             PreparedStatement ps = conn.prepareStatement(query)) {
-//            ps.setString(1, loanID);
-//            ResultSet rs = ps.executeQuery();
-//            if (rs.next()) {
-//                // Extract data from the ResultSet
-//                Student student = new Student();
-//                student.setIdNumber(rs.getString("s.id"));
-//                student.setLastName(rs.getString("s.last_name"));
-//                student.setFirstName(rs.getString("s.first_name"));
-//                student.setMiddleName(rs.getString("s.middle_name"));
-//                student.setSuffix(rs.getString("s.suffix"));
-//                student.setBirthdate(rs.getString("s.birthdate"));
-//                student.setGender(rs.getString("s.gender"));
-//                student.setPhoneNumber(rs.getString("s.phone_number"));
-//                student.setEmailAddress(rs.getString("s.email"));
-//                student.setNationality(rs.getString("s.nationality"));
-//                student.setCivilStatus(rs.getString("s.civil_status"));
-//                student.setAddress(rs.getString("s.address"));
-//                student.setZipCode(rs.getString("s.zip_code"));
-//                student.setGuardianFullName(rs.getString("s.guardian_fullname"));
-//                student.setGuardianRelationship(rs.getString("s.guardian_relationship"));
-//                student.setGuardianContactNumber(rs.getString("s.guardian_contact_number"));
-//
-//                Student education = new Student();
-//                education.setDepartment(rs.getString("e.department"));
-//                education.setProgramEnrolled(rs.getString("e.program_enrolled"));
-//                education.setYearLevel(rs.getString("e.year_level"));
-//
-//                loan = new StudentLoan(
-//                    rs.getString("l.student_id"),
-//                    rs.getDouble("l.amount"),
-//                    rs.getDouble("l.num_of_yrs_to_pay"),
-//                    rs.getDouble("l.interest_rate"),
-//                    rs.getDouble("l.monthly_payment"),
-//                    rs.getString("l.loan_purpose"),
-//                    rs.getDouble("l.num_of_payments"),
-//                    rs.getDouble("l.total_payment")
-//                );
-//                loan.setStudent(student);
-//                loan.setEducation(education);
-//            }
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error retrieving applicant summary data: " + ex.getMessage());
-//        }
-//        return loan;
-//    }
+//     in payment tab, view student loan info
+        public List<String[]> viewLoanerInfo(int laCode){
+            List<String[]> viewLoanerInfo = new ArrayList<>();
+            String queryViewLoanInfo = "SELECT l.id, s.last_name, s.first_name, s.middle_name, s.suffix,s.id, l.amount, l.num_of_yrs_to_pay , l.monthly_payment, l.total_payment FROM `loan_table`  l JOIN student_table s ON l.student_id = s.id WHERE l.id = ?;";
+            try {
+                // Update connection string with your database credentials
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                PreparedStatement psViewLoanInfo = conn.prepareStatement(queryViewLoanInfo);
+                psViewLoanInfo.setInt(1,laCode );
+                ResultSet rs = psViewLoanInfo.executeQuery();
+                
+                JOptionPane.showMessageDialog(null, ""+ laCode);
+                        while (rs.next()) {
+                                String[] tbData = new String[7]; // Increase array size to accommodate the created_on field
+                                tbData[0] = "SL" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
+                                String fn = rs.getString("s.first_name");
+                                String mn = rs.getString("s.middle_name");
+                                String ln = rs.getString("s.last_name");
+                                String studentName = fn + " " + mn + " " + ln;
+                                String studentID = rs.getString("s.id");
+                                tbData[1] = studentName;
+                                tbData[2] = studentID;
+                               
+                                 // Format the double values to two decimal places
+                                DecimalFormat df = new DecimalFormat("#.00");
+                                tbData[3] = df.format(rs.getDouble("l.amount"));
+                                tbData[4] = df.format(rs.getDouble("l.monthly_payment"));
+                                tbData[5] = df.format(rs.getDouble("l.num_of_yrs_to_pay"));
+                                tbData[6] = df.format(rs.getDouble("l.total_payment"));
+
+                                viewLoanerInfo.add(tbData);
+                        }
+                        
+                    psViewLoanInfo.close();
+                    conn.close();
+                    rs.close();      
+                }catch(Exception ex){
+                        JOptionPane.showMessageDialog(null, "Error viewLoanerInfo() :  " + ex.getMessage());
+
+                }
+            return viewLoanerInfo;
+
+        }
+
+    public void addPaymentTransaction(int laCode, double inputPayment, String name, String studentID, double amountBorrowed, double monthlyPayment, double numOfYearsToPay, double remainingBalance) {
+    String queryGetStudentId = "SELECT student_id FROM loan_table WHERE id = ?;";
+    JOptionPane.showMessageDialog(null, ""+ inputPayment + ", " + laCode + ", " + name + ",  "+ studentID+ ", " + amountBorrowed + ", "+ monthlyPayment + ", " + numOfYearsToPay + ", "+ remainingBalance );
+
+    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+         PreparedStatement psGetStudentId = conn.prepareStatement(queryGetStudentId)) {
+
+        psGetStudentId.setInt(1, laCode);
+        ResultSet rs = psGetStudentId.executeQuery();
+
+        if (rs.next()) {
+            String studentId = rs.getString("student_id");
+
+            // Get the latest payment transaction from the database
+            String queryGetLatestPaymentTransaction = "SELECT * FROM transaction_table WHERE la_code = ? ORDER BY date_paid DESC LIMIT 1;";
+            try (PreparedStatement psGetLatestPaymentTransaction = conn.prepareStatement(queryGetLatestPaymentTransaction)) {
+                psGetLatestPaymentTransaction.setInt(1, laCode);
+                ResultSet rsLatestPayment = psGetLatestPaymentTransaction.executeQuery();
+
+                double oldRemainingBalance = 0;
+                if (rsLatestPayment.next()) {
+                    oldRemainingBalance = rsLatestPayment.getDouble("remaining_balance");
+                }
+
+                // Update the remaining balance based on the input payment
+                double newRemainingBalance = oldRemainingBalance - inputPayment;
+
+                // Add the new payment transaction to the database
+                String queryAddPaymentTransaction = "INSERT INTO transaction_table (la_code, student_id, amount_paid, remaining_balance, date_paid) VALUES (?, ?, ?, ?, ?);";
+                try (PreparedStatement psAddPaymentTransaction = conn.prepareStatement(queryAddPaymentTransaction)) {
+                    psAddPaymentTransaction.setInt(1, laCode);
+                    psAddPaymentTransaction.setString(2, studentId);
+                    psAddPaymentTransaction.setDouble(3, inputPayment);
+                    psAddPaymentTransaction.setDouble(4, newRemainingBalance);
+                    long timestampValue = System.currentTimeMillis();
+                    Timestamp paymentTimestamp = new Timestamp(timestampValue);
+
+                    psAddPaymentTransaction.setTimestamp(5, paymentTimestamp);
+                    psAddPaymentTransaction.executeUpdate();
+
+                    JOptionPane.showMessageDialog(null, "Payment recorded successfully. New remaining balance: PHP" + newRemainingBalance);
+
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - INSERT: " + e.getMessage());
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Loan record not found for laCode: " + laCode);
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
+    }
+}
+
 }
