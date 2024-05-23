@@ -263,11 +263,11 @@ public class Payment extends javax.swing.JInternalFrame {
         List<String[]> loanerInfo = dbOperation.viewLoanerInfo(laCode);
         String name = loanerInfo.get(0)[1];
         String studentID = loanerInfo.get(0)[2];
-        String amountBorrowed = loanerInfo.get(0)[3];
-        String monthlyPayment = loanerInfo.get(0)[4];
-        String numOfYearsToPay = loanerInfo.get(0)[5];
-        String remainingBalance = loanerInfo.get(0)[6];
-       // dbOperation.addPaymentTransaction(laCode, inputPayment, name, studentID, amountBorrowed, monthlyPayment, numOfYearsToPay, remainingBalance);
+        double amountBorrowed = Double.parseDouble(loanerInfo.get(0)[3]);
+        double monthlyPayment = Double.parseDouble(loanerInfo.get(0)[4]);
+        double numOfYearsToPay = Double.parseDouble(loanerInfo.get(0)[5]);
+        double remainingBalance = Double.parseDouble(loanerInfo.get(0)[6]);
+        //dbOperation.addPaymentTransaction(laCode, inputPayment, name, studentID, amountBorrowed, monthlyPayment, numOfYearsToPay, remainingBalance);
 
         
         LabelLAC.setText("Loan Application Code: " + laCode);
