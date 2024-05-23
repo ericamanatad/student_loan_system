@@ -353,7 +353,7 @@ public class ConnectionString {
 
     public void addPaymentTransaction(int laCode, double inputPayment, String name, String studentID, double amountBorrowed, double monthlyPayment, double numOfYearsToPay, double remainingBalance) {
     String queryGetStudentId = "SELECT student_id FROM loan_table WHERE id = ?;";
-    JOptionPane.showMessageDialog(null, ""+ inputPayment + ", " + laCode + ", " + name + ",  "+ studentID+ ", " + amountBorrowed + ", "+ monthlyPayment + ", " + numOfYearsToPay + ", "+ remainingBalance );
+    JOptionPane.showMessageDialog(null, "values passed in addPaymentTransaction : "+ inputPayment + ", " + laCode + ", " + name + ",  "+ studentID+ ", " + amountBorrowed + ", "+ monthlyPayment + ", " + numOfYearsToPay + ", "+ remainingBalance );
 
     try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
          PreparedStatement psGetStudentId = conn.prepareStatement(queryGetStudentId)) {
