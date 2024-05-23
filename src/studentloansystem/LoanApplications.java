@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.GroupLayout.Alignment;
 
 public class LoanApplications extends javax.swing.JInternalFrame {
 
@@ -101,9 +102,14 @@ public class LoanApplications extends javax.swing.JInternalFrame {
             }
         };
 
-        JTableLoanApplications.setModel(model);
-        JTableLoanApplications.getColumn("Action").setCellRenderer(new ButtonRenderer());
-       JTableLoanApplications.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(JTableLoanApplications));
+	        JTableLoanApplications.setModel(new DefaultTableModel(
+	        	new Object[][] {
+	        	},
+	        	new String[] {
+	        		"LACode", "Name", "Amount", "Time Applied", "Action"
+	        	}
+	        ));
+	        JTableLoanApplications.getColumn("Action").setCellRenderer(new ButtonRenderer());
        
        class LeftAlignRenderer extends DefaultTableCellRenderer {
 
@@ -112,9 +118,6 @@ public class LoanApplications extends javax.swing.JInternalFrame {
             setHorizontalAlignment(SwingConstants.LEFT); // Align text to the left
         }
     }
-
-    // Set custom renderer for "Amount" column
-    JTableLoanApplications.getColumnModel().getColumn(2).setCellRenderer(new LeftAlignRenderer());
 
 
         jScrollPane1.setViewportView(JTableLoanApplications);
@@ -130,21 +133,21 @@ public class LoanApplications extends javax.swing.JInternalFrame {
         });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
-                    .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(54)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 937, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(60, 60, 60))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addGap(25)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(48, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }
