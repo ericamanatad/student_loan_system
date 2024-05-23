@@ -473,7 +473,7 @@ public class ApplyStep2 extends javax.swing.JFrame {
 }
         purpose = chosenItemInPanel.toString().trim();
         
-        JOptionPane.showMessageDialog(null, "Loan details " + amountToLoan  + numOfYrsToPay + interestRate + " " + purpose);
+        JOptionPane.showMessageDialog(null, "Loan details " + amountToLoan  + " " + numOfYrsToPay + " " + interestRate + " " + purpose);
 
         Student education = new Student(idNumber, department, programEnrolled, yearLevel);
         StudentLoan loan = new StudentLoan(student.getIdNumber(),amountToLoan,  numOfYrsToPay, interestRate, monthlyPayment, purpose, numPayments, totalPayment );

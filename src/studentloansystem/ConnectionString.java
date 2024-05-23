@@ -320,5 +320,58 @@ public class ConnectionString {
             }
             return loanApplications;
         }
-
+        
+//        public StudentLoan getApplicantSummaryData(String loanID) {
+//        StudentLoan loan = null;
+//        // Query to retrieve loan and student data based on loan ID
+//        String query = "SELECT s.*, e.*, l.* FROM student_table s " +
+//                       "JOIN education_table e ON s.id = e.student_id " +
+//                       "JOIN loan_table l ON s.id = l.student_id WHERE l.id = ?";
+//        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+//             PreparedStatement ps = conn.prepareStatement(query)) {
+//            ps.setString(1, loanID);
+//            ResultSet rs = ps.executeQuery();
+//            if (rs.next()) {
+//                // Extract data from the ResultSet
+//                Student student = new Student();
+//                student.setIdNumber(rs.getString("s.id"));
+//                student.setLastName(rs.getString("s.last_name"));
+//                student.setFirstName(rs.getString("s.first_name"));
+//                student.setMiddleName(rs.getString("s.middle_name"));
+//                student.setSuffix(rs.getString("s.suffix"));
+//                student.setBirthdate(rs.getString("s.birthdate"));
+//                student.setGender(rs.getString("s.gender"));
+//                student.setPhoneNumber(rs.getString("s.phone_number"));
+//                student.setEmailAddress(rs.getString("s.email"));
+//                student.setNationality(rs.getString("s.nationality"));
+//                student.setCivilStatus(rs.getString("s.civil_status"));
+//                student.setAddress(rs.getString("s.address"));
+//                student.setZipCode(rs.getString("s.zip_code"));
+//                student.setGuardianFullName(rs.getString("s.guardian_fullname"));
+//                student.setGuardianRelationship(rs.getString("s.guardian_relationship"));
+//                student.setGuardianContactNumber(rs.getString("s.guardian_contact_number"));
+//
+//                Student education = new Student();
+//                education.setDepartment(rs.getString("e.department"));
+//                education.setProgramEnrolled(rs.getString("e.program_enrolled"));
+//                education.setYearLevel(rs.getString("e.year_level"));
+//
+//                loan = new StudentLoan(
+//                    rs.getString("l.student_id"),
+//                    rs.getDouble("l.amount"),
+//                    rs.getDouble("l.num_of_yrs_to_pay"),
+//                    rs.getDouble("l.interest_rate"),
+//                    rs.getDouble("l.monthly_payment"),
+//                    rs.getString("l.loan_purpose"),
+//                    rs.getDouble("l.num_of_payments"),
+//                    rs.getDouble("l.total_payment")
+//                );
+//                loan.setStudent(student);
+//                loan.setEducation(education);
+//            }
+//        } catch (SQLException ex) {
+//            JOptionPane.showMessageDialog(null, "Error retrieving applicant summary data: " + ex.getMessage());
+//        }
+//        return loan;
+//    }
 }

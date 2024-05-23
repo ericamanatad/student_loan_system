@@ -58,29 +58,30 @@ public class LoanSummary extends javax.swing.JFrame {
         dfMonthlyPayment = df.format(paymentMonthly);
         dfTotalPayment = df.format(totalPayment);
         
-        LabelIDNo.setText("Student ID No: " + student.getIdNumber());
-        LabelFullName.setText("FullName: " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName());
-        LabelBirthdate.setText("Birthdate: " + student.getBirthdate());
-        LabelGender.setText("Gender: " + student.getGender());
-        LabelPhoneNumber.setText("Phone Number: " + student.getPhoneNumber());
-        LabelEmail.setText("Email Address: " + student.getEmailAddress());
-        LabelNationality.setText("Nationality: " + student.getNationality());
-        LabelCivilStatus.setText("Civil Status: " + student.getCivilStatus());
-        LabelAddress.setText("Address: " + student.getAddress());
-        LabelZipCode.setText("Zip Code: " + student.getZipCode());
-        LabelGuardianName.setText("Name of parent/guardian: " + student.getGuardianFullName());
-        LabelRelationship.setText("Relationship: " + student.getGuardianRelationship());
-        LabelGuardianPhoneNumber.setText("Phone Number: " + student.getGuardianContactNumber());
-        LabelDepartment.setText("Department Name: " + education.getDepartment());
-        LabelProgramEnrolled.setText("Program Enrolled: " + education.getProgramEnrolled());
-        LabelYearLevel.setText("Year Level: " + education.getYearLevel());
-        LabelTotalAmountNeeded.setText("Total amount needed: " + loan.getTotalAmount());
-        LabelNumOfYrsToPay.setText("Number of years to pay: " + loan.getNumYrsToPay());
-        LabelInterestRate.setText("Interest Rate : " + loan.getInterestRate());
-        LabelWhatIsTheFundFor.setText("What is the fund for? : " + loan.getPurpose());
-        LabelPaymentPerMonth.setText("Payment per Month: " + dfMonthlyPayment);
-        LabelNumberOfPayments.setText("Number of Payments:  " + loan.getNumPayments());
-        LabelTotalPayment.setText("Total Payment : " + dfTotalPayment);
+        LabelIDNo.setText("<html><b>Student ID No:</b> " + student.getIdNumber() + "</html>");
+        LabelFullName.setText("<html><b>Full Name:</b> " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName() + "</html>");
+        LabelBirthdate.setText("<html><b>Birthdate:</b> " + student.getBirthdate() + "</html>");
+        LabelGender.setText("<html><b>Gender:</b> " + student.getGender() + "</html>");
+        LabelPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getPhoneNumber() + "</html>");
+        LabelEmail.setText("<html><b>Email Address:</b> " + student.getEmailAddress() + "</html>");
+        LabelNationality.setText("<html><b>Nationality:</b> " + student.getNationality() + "</html>");
+        LabelCivilStatus.setText("<html><b>Civil Status:</b> " + student.getCivilStatus() + "</html>");
+        LabelAddress.setText("<html><b>Address:</b> " + student.getAddress() + "</html>");
+        LabelZipCode.setText("<html><b>Zip Code:</b> " + student.getZipCode() + "</html>");
+        LabelGuardianName.setText("<html><b>Name of parent/guardian:</b> " + student.getGuardianFullName() + "</html>");
+        LabelRelationship.setText("<html><b>Relationship:</b> " + student.getGuardianRelationship() + "</html>");
+        LabelGuardianPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getGuardianContactNumber() + "</html>");
+        LabelDepartment.setText("<html><b>Department Name:</b> " + education.getDepartment() + "</html>");
+        LabelProgramEnrolled.setText("<html><b>Program Enrolled:</b> " + education.getProgramEnrolled() + "</html>");
+        LabelYearLevel.setText("<html><b>Year Level:</b> " + education.getYearLevel() + "</html>");
+        LabelTotalAmountNeeded.setText("<html><b>Total amount needed:</b> " + loan.getTotalAmount() + "</html>");
+        LabelNumOfYrsToPay.setText("<html><b>Number of years to pay:</b> " + loan.getNumYrsToPay() + "</html>");
+        LabelInterestRate.setText("<html><b>Interest Rate:</b> " + loan.getInterestRate() + "</html>");
+        LabelWhatIsTheFundFor.setText("<html><b>What is the fund for?:</b> " + loan.getPurpose() + "</html>");
+        LabelPaymentPerMonth.setText("<html><b>Payment per Month:</b> " + dfMonthlyPayment + "</html>");
+        LabelNumberOfPayments.setText("<html><b>Number of Payments:</b>  " + loan.getNumPayments() + "</html>");
+        LabelTotalPayment.setText("<html><b>Total Payment:</b> " + dfTotalPayment + "</html>" );
+
         
         
     }
@@ -141,7 +142,7 @@ public class LoanSummary extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 910, Short.MAX_VALUE)
+            .addGap(0, 893, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,16 +254,16 @@ public class LoanSummary extends javax.swing.JFrame {
         SubmitBtnLayout.setHorizontalGroup(
             SubmitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SubmitBtnLayout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel22)
-                .addGap(49, 49, 49))
+                .addGap(48, 48, 48))
         );
         SubmitBtnLayout.setVerticalGroup(
             SubmitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SubmitBtnLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel22)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel21.setBackground(new java.awt.Color(0, 153, 51));
@@ -277,7 +278,7 @@ public class LoanSummary extends javax.swing.JFrame {
         LabelInterestRate.setText("Interest Rate :");
 
         LabelLastName4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        LabelLastName4.setText("LOAN");
+        LabelLastName4.setText("PAYMENT");
         LabelLastName4.setName(""); // NOI18N
 
         LabelLastName5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
@@ -298,14 +299,14 @@ public class LoanSummary extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelZipCode)
-                            .addComponent(LabelAddress))
-                        .addGap(407, 407, 407))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LabelFullName)
@@ -316,117 +317,119 @@ public class LoanSummary extends javax.swing.JFrame {
                             .addComponent(LabelNationality)
                             .addComponent(LabelCivilStatus)
                             .addComponent(LabelLastName2)
-                            .addComponent(LabelIDNo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(LabelLastName1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelProgramEnrolled, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelYearLevel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelDepartment, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelLastName3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelGuardianName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelGuardianPhoneNumber, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LabelRelationship, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(99, 99, 99)))
+                            .addComponent(LabelIDNo)
+                            .addComponent(LabelZipCode)
+                            .addComponent(LabelAddress))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelLastName1)
+                            .addComponent(LabelGuardianName)
+                            .addComponent(LabelGuardianPhoneNumber)
+                            .addComponent(LabelRelationship)
+                            .addComponent(LabelProgramEnrolled)
+                            .addComponent(LabelYearLevel)
+                            .addComponent(LabelDepartment)
+                            .addComponent(LabelLastName3))
+                        .addGap(54, 54, 54)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LabelNumOfYrsToPay)
-                    .addComponent(LabelInterestRate)
-                    .addComponent(LabelTotalAmountNeeded)
-                    .addComponent(LabelWhatIsTheFundFor)
-                    .addComponent(LabelLastName4)
-                    .addComponent(LabelLastName5)
-                    .addComponent(LabelPaymentPerMonth)
-                    .addComponent(LabelNumberOfPayments)
-                    .addComponent(LabelTotalPayment))
-                .addContainerGap(113, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelNumOfYrsToPay)
+                            .addComponent(LabelInterestRate)
+                            .addComponent(LabelTotalAmountNeeded)
+                            .addComponent(LabelLastName5)
+                            .addComponent(LabelWhatIsTheFundFor))
+                        .addGap(104, 104, 104))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LabelLastName4)
+                            .addComponent(LabelPaymentPerMonth)
+                            .addComponent(LabelNumberOfPayments)
+                            .addComponent(LabelTotalPayment))
+                        .addGap(52, 52, 52))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel21)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LabelLastName2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(LabelIDNo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelFullName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelBirthdate)
-                                    .addComponent(LabelGuardianPhoneNumber))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelGender)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelPhoneNumber)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelEmail)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelNationality)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelCivilStatus))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelLastName1)
-                                    .addComponent(LabelLastName5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelTotalAmountNeeded)
-                                    .addComponent(LabelGuardianName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(LabelNumOfYrsToPay)
-                                    .addComponent(LabelRelationship))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelInterestRate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LabelWhatIsTheFundFor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelLastName3)
-                                    .addComponent(LabelLastName4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelDepartment)
-                                    .addComponent(LabelPaymentPerMonth))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelProgramEnrolled)
-                                    .addComponent(LabelNumberOfPayments))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(LabelYearLevel)
-                                    .addComponent(LabelTotalPayment))))
+                        .addComponent(LabelLastName2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(LabelIDNo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelFullName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelBirthdate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelGender)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelPhoneNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelEmail)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelNationality)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LabelCivilStatus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelAddress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelZipCode)
-                        .addGap(30, 30, 30)
-                        .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel21)
-                        .addGap(38, 38, 38))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelLastName1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelGuardianName)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(LabelRelationship)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelGuardianPhoneNumber))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelLastName5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelTotalAmountNeeded)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelNumOfYrsToPay, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelInterestRate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelWhatIsTheFundFor)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelLastName3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelDepartment)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelProgramEnrolled)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelYearLevel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LabelLastName4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelPaymentPerMonth)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelNumberOfPayments)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelTotalPayment)))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SubmitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(58, 58, 58))))
         );
 
         pack();

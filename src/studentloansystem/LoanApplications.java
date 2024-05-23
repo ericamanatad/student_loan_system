@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import javax.swing.table.DefaultTableCellRenderer;
 
 public class LoanApplications extends javax.swing.JInternalFrame {
 
@@ -102,7 +103,19 @@ public class LoanApplications extends javax.swing.JInternalFrame {
 
         JTableLoanApplications.setModel(model);
         JTableLoanApplications.getColumn("Action").setCellRenderer(new ButtonRenderer());
-        JTableLoanApplications.getColumn("Action").setCellEditor(new ButtonEditor());
+       JTableLoanApplications.getColumnModel().getColumn(4).setCellEditor(new ButtonEditor(JTableLoanApplications));
+       
+       class LeftAlignRenderer extends DefaultTableCellRenderer {
+
+        public LeftAlignRenderer() {
+            super();
+            setHorizontalAlignment(SwingConstants.LEFT); // Align text to the left
+        }
+    }
+
+    // Set custom renderer for "Amount" column
+    JTableLoanApplications.getColumnModel().getColumn(2).setCellRenderer(new LeftAlignRenderer());
+
 
         jScrollPane1.setViewportView(JTableLoanApplications);
         JTableLoanApplications.addMouseMotionListener(new MouseMotionAdapter() {
@@ -151,31 +164,46 @@ public class LoanApplications extends javax.swing.JInternalFrame {
     }
 
     // Custom button editor class
-    class ButtonEditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
-        private JButton button;
+    // Custom button editor class
+class ButtonEditor extends AbstractCellEditor implements TableCellEditor, ActionListener {
+    private JButton button;
+    private JTable table;
 
-        public ButtonEditor() {
-            button = new JButton("Action");
-            button.setOpaque(true);
-            button.addActionListener(this);
-        }
-
-        @Override
-        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-            return button;
-        }
-
-        @Override
-        public Object getCellEditorValue() {
-            return "Action";
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(button, "Action: Clicked!");
-            fireEditingStopped();
-        }
+    public ButtonEditor(JTable table) {
+        this.table = table;
+        button = new JButton("Action");
+        button.setOpaque(true);
+        button.addActionListener(this);
     }
+
+    @Override
+    public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+        return button;
+    }
+
+    @Override
+    public Object getCellEditorValue() {
+        return "Action";
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow != -1) {
+            String loanID = (String) table.getValueAt(selectedRow, 0);
+            String studentName = (String) table.getValueAt(selectedRow, 1);
+            double amount = (double) table.getValueAt(selectedRow, 2);
+            String timeApplied = (String) table.getValueAt(selectedRow, 3);
+
+            // Create and display the ApplicantSummary form
+            ApplicantSummary applicantSummary = new ApplicantSummary();
+            applicantSummary.setLACode(loanID);  // Set the Loan_ID in the LblLACode
+            applicantSummary.setVisible(true);
+        }
+        fireEditingStopped();
+    }
+}
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame();
