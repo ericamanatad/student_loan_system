@@ -321,6 +321,39 @@ public class ConnectionString {
             return loanApplications;
         }
         
+        public List<String[]> viewLoaners() {
+            List<String[]> activeLoaners = new ArrayList<>();
+            String queryViewActiveLoaners = "SELECT l.id, l.amount, l.monthly_payment, l.num_of_yrs_to_pay,  s.last_name, s.first_name, s.middle_name, l.created_on, t.remaining_balance FROM student_table s JOIN loan_table l ON s.id = l.student_id JOIN transaction_table t ON l.id = t.la_code WHERE s.is_active = 1;";
+            try {
+                // Update connection string with your database credentials
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                PreparedStatement psViewActiveLoaners = conn.prepareStatement(queryViewActiveLoaners);
+                ResultSet rs = psViewActiveLoaners.executeQuery();
+                while (rs.next()) {
+                    String[] tbData = new String[8]; // Increase array size to accommodate the created_on field
+                    tbData[0] = "SL" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
+                    String fn = rs.getString("s.first_name");
+                    String mn = rs.getString("s.middle_name");
+                    String ln = rs.getString("s.last_name");
+                    String studentName = fn + " " + mn + " " + ln;
+                    tbData[1] = studentName;
+                    tbData[2] = String.valueOf(rs.getDouble("l.amount"));
+                    tbData[3] = String.valueOf(rs.getDouble("l.monthly_payment"));
+                    tbData[4] = String.valueOf(rs.getInt("l.num_of_yrs_to_pay"));
+                    tbData[5] = String.valueOf(rs.getDouble("t.remaining_balance"));
+                    tbData[6] = rs.getString("s.is_active"); // Store as a String
+                    
+                    activeLoaners.add(tbData);
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error viewLoaners() :  " + ex.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            return activeLoaners;
+        }
+        
+        
 //        public StudentLoan getApplicantSummaryData(String loanID) {
 //        StudentLoan loan = null;
 //        // Query to retrieve loan and student data based on loan ID
