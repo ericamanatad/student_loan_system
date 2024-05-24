@@ -31,74 +31,85 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="LblLACode12" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="LblLACode" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="242" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="63" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelLastName2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelIDNo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelFullName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelBirthdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelLastName3" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelProgramEnrolled" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelDepartment" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelYearLevel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="LabelLastName2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelFullName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelBirthdate" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelGender" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelAddress" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                              <Component id="LabelCivilStatus" min="-2" max="-2" attributes="0"/>
-                                              <Component id="LabelNationality" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="LabelZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelLastName1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelGuardianName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelRelationship" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelGuardianPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="173" pref="173" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="LabelNumberOfPayments" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelTotalPayment" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelLastName4" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelPaymentPerMonth" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelInterestRate" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelNumOfYrsToPay" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelTotalAmountNeeded" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelLastName5" min="-2" max="-2" attributes="0"/>
-                                          <Component id="LabelWhatIsTheFundFor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="LabelIDNo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="LabelIDNo12" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelLastName3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelProgramEnrolled" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelDepartment" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelYearLevel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="LblLACode" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelGender" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                      <Component id="LabelCivilStatus" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelNationality" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="LabelZipCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelLastName1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelGuardianName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelRelationship" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelGuardianPhoneNumber" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="LabelLastName4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelNumberOfPayments" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelPaymentPerMonth" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelInterestRate" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelNumOfYrsToPay" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelTotalAmountNeeded" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelLastName5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="LabelWhatIsTheFundFor" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="LabelTotalPayment" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="LabelTotalPayment12" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
+                      <EmptySpace pref="140" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="ApproveBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="DeclineBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -107,14 +118,21 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="LblLACode" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LblLACode12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LblLACode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -122,7 +140,10 @@
                   <Group type="102" attributes="0">
                       <Component id="LabelLastName2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="LabelIDNo" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabelIDNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelIDNo12" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LabelFullName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -186,15 +207,18 @@
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Component id="LabelNumberOfPayments" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="LabelTotalPayment" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="ApproveBtn" min="-2" max="-2" attributes="0"/>
-                          <Component id="DeclineBtn" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LabelTotalPayment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LabelTotalPayment12" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="ApproveBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="DeclineBtn" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -247,7 +271,7 @@
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LabelIDNo">
+    <Component class="javax.swing.JLabel" name="LabelIDNo12">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="12" style="0"/>
@@ -462,7 +486,7 @@
         <Property name="text" type="java.lang.String" value="Number of Payments: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LabelTotalPayment">
+    <Component class="javax.swing.JLabel" name="LabelTotalPayment12">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="12" style="0"/>
@@ -575,6 +599,33 @@
           <Color blue="19" green="6d" red="41" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="SL1000"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelTotalPayment">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Yu Gothic UI" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Total Payment:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LabelIDNo">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Yu Gothic UI" size="12" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Student ID No. "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LblLACode12">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Yu Gothic UI Semibold" size="30" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="19" green="6d" red="41" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="SL"/>
       </Properties>
     </Component>
   </SubComponents>

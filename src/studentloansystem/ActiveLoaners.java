@@ -17,12 +17,16 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.MouseAdapter;
 
 public class ActiveLoaners extends javax.swing.JInternalFrame {
 
     private static final long serialVersionUID = 1L;
 	private static JTable JTableActiveLoaners;
     private static DefaultTableModel model;
+    private JTextField inputLAcode;
 
     public ActiveLoaners() {
         initComponents();
@@ -30,6 +34,8 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
         BasicInternalFrameUI ui = (BasicInternalFrameUI) this.getUI();
         ui.setNorthPane(null);
         viewLoaners(); // Call method to populate table
+        inputLAcode = new JTextField();
+
     }
     
     public static void viewLoaners() {
@@ -67,6 +73,9 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableActiveLoaners = new javax.swing.JTable();
+
+        inputLAcode = new JTextField();
+        inputLAcode.setColumns(10);
 
         setBackground(new java.awt.Color(211, 250, 215));
 
@@ -122,23 +131,70 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
                 JTableActiveLoaners.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
         });
+        
+        inputLAcode = new JTextField();
+        inputLAcode.setColumns(10);
+        
+        JLabel lblNewLabel = new JLabel("SL");
+        lblNewLabel.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 14));
+        
+        JButton btnOK = new JButton("OK");
+        btnOK.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		try {
+        			String laCode = inputLAcode.getText();
+            		//int laCode = Integer.parseInt(inputLAcode.getText());
+            		JOptionPane.showMessageDialog(null, "clicked OK" + laCode);
+        		}catch(Exception ex) {
+            		JOptionPane.showMessageDialog(null, ex.getMessage());
+        		}
+        	}
+        });
+        btnOK.addMouseListener(new MouseAdapter() {
+        	//-------------------------------------------------------------------------------------------------->
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+            	
+        	}
+        });
+        btnOK.setFont(new Font("Yu Gothic UI", Font.BOLD, 12));
+        
+        JLabel lblNewLabel_1 = new JLabel("View payment history");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(54)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 937, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(60, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.TRAILING)
+        		.addGroup(Alignment.LEADING, layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 937, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(434, Short.MAX_VALUE))
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap(627, Short.MAX_VALUE)
+        			.addComponent(lblNewLabel_1)
+        			.addGap(18)
+        			.addComponent(lblNewLabel)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(inputLAcode, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnOK)
+        			.addGap(505))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(25)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(48, Short.MAX_VALUE))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addGap(15)
+        			.addGroup(layout.createParallelGroup(Alignment.TRAILING)
+        				.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        					.addComponent(lblNewLabel)
+        					.addComponent(lblNewLabel_1))
+        				.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        					.addComponent(btnOK)
+        					.addComponent(inputLAcode, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
+        			.addContainerGap(61, Short.MAX_VALUE))
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }

@@ -65,7 +65,7 @@ public class ApplicantSummary extends javax.swing.JFrame {
               
               System.out.println(student.getFirstName());
               //change label texts
-              LabelIDNo.setText("" +  education.getIdNumber());
+              LabelIDNo12.setText("" +  education.getIdNumber());
               LabelFullName.setText("<html><b>Full Name:</b> " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName() + "</html>");
               LabelBirthdate.setText("<html><b>Birthdate:</b> " + student.getBirthdate() + "</html>");
               LabelGender.setText("<html><b>Gender:</b> " + student.getGender() + "</html>");
@@ -87,7 +87,7 @@ public class ApplicantSummary extends javax.swing.JFrame {
               LabelWhatIsTheFundFor.setText("<html><b>What is the fund for?:</b> " + loan.getPurpose() + "</html>");
               LabelPaymentPerMonth.setText("<html><b>Payment per Month:</b> " + loan.getPaymentPerMonth() + "</html>");
               LabelNumberOfPayments.setText("<html><b>Number of Payments:</b>  " + loan.getNumPayments() + "</html>");
-              LabelTotalPayment.setText("" + loan.getTotalPayment());
+              LabelTotalPayment12.setText("" + loan.getTotalPayment());
               
     	  }catch(Exception ex) {
     		  JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -108,7 +108,7 @@ public class ApplicantSummary extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         LabelLastName2 = new javax.swing.JLabel();
-        LabelIDNo = new javax.swing.JLabel();
+        LabelIDNo12 = new javax.swing.JLabel();
         LabelFullName = new javax.swing.JLabel();
         LabelBirthdate = new javax.swing.JLabel();
         LabelGender = new javax.swing.JLabel();
@@ -134,12 +134,15 @@ public class ApplicantSummary extends javax.swing.JFrame {
         LabelLastName4 = new javax.swing.JLabel();
         LabelPaymentPerMonth = new javax.swing.JLabel();
         LabelNumberOfPayments = new javax.swing.JLabel();
-        LabelTotalPayment = new javax.swing.JLabel();
+        LabelTotalPayment12 = new javax.swing.JLabel();
         ApproveBtn = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
         DeclineBtn = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         LblLACode = new javax.swing.JLabel();
+        LabelTotalPayment = new javax.swing.JLabel();
+        LabelIDNo = new javax.swing.JLabel();
+        LblLACode12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("APPLICANT");
@@ -169,8 +172,8 @@ public class ApplicantSummary extends javax.swing.JFrame {
         LabelLastName2.setText("STUDENT APPLICANT");
         LabelLastName2.setName(""); // NOI18N
 
-        LabelIDNo.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        LabelIDNo.setText("Student ID No. ");
+        LabelIDNo12.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelIDNo12.setText("Student ID No. ");
 
         LabelFullName.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelFullName.setText("Full Name:");
@@ -256,29 +259,13 @@ public class ApplicantSummary extends javax.swing.JFrame {
         LabelNumberOfPayments.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         LabelNumberOfPayments.setText("Number of Payments: ");
 
-        LabelTotalPayment.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        LabelTotalPayment.setText("Total Payment : ");
+        LabelTotalPayment12.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelTotalPayment12.setText("Total Payment : ");
 
         ApproveBtn.setBackground(new java.awt.Color(65, 109, 25));
         ApproveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ApproveBtnMouseClicked(evt);
-                try {
-                	/////////////////////////////////////////// approvveeeee
-                    int laCode = Integer.parseInt(LblLACode.getText());
-                    JOptionPane.showMessageDialog(null, "ApproveBtnMouseClicked" + laCode);
-                    //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
-                    ConnectionString dbOperation = new ConnectionString();
-                    String idNumber = LabelIDNo.getText();
-                    double totalPayment = Double.parseDouble(LabelTotalPayment.getText());
-                    JOptionPane.showMessageDialog(null, "ApproveBtnMouseClicked" + laCode + "and " + idNumber);
-
-                    dbOperation.approveApplicant(idNumber);
-                    dbOperation.addPartialTransaction(laCode, idNumber, totalPayment);
-                	
-                }catch(Exception ex) {
-                	JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ApproveBtnMouseEntered(evt);
@@ -314,27 +301,11 @@ public class ApplicantSummary extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
-/////////////////////////////////decline
+
         DeclineBtn.setBackground(new java.awt.Color(184, 0, 0));
         DeclineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeclineBtnMouseClicked(evt);
-                try {
-                	/////////////////////////////////////////// Declineee
-                    int laCode = Integer.parseInt(LblLACode.getText());
-                    //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
-                    ConnectionString dbOperation = new ConnectionString();
-                    String idNumber = LabelIDNo.getText();
-                    JOptionPane.showMessageDialog(null, "DeclineBtnMouseClicked" + laCode + "and " + idNumber);
-
-                    dbOperation.deleteStudent(idNumber);
-                    dbOperation.deleteLoanRecord(laCode);
-                    dbOperation.deleteEducation(idNumber);
-                	
-                }catch(Exception ex) {
-                	JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
-                
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 DeclineBtnMouseEntered(evt);
@@ -375,85 +346,111 @@ public class ApplicantSummary extends javax.swing.JFrame {
         LblLACode.setForeground(new java.awt.Color(65, 109, 25));
         LblLACode.setText("SL1000");
 
+        LabelTotalPayment.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelTotalPayment.setText("Total Payment:");
+
+        LabelIDNo.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
+        LabelIDNo.setText("Student ID No. ");
+
+        LblLACode12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 30)); // NOI18N
+        LblLACode12.setForeground(new java.awt.Color(65, 109, 25));
+        LblLACode12.setText("SL");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LblLACode12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(LblLACode))
+                    .addComponent(jLabel4))
+                .addContainerGap(242, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(63, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
+                                    .addComponent(LabelLastName2)
+                                    .addComponent(LabelFullName)
+                                    .addComponent(LabelBirthdate)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LabelLastName2)
-                                            .addComponent(LabelIDNo)
-                                            .addComponent(LabelFullName)
-                                            .addComponent(LabelBirthdate))
-                                        .addGap(177, 177, 177)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LabelLastName3)
-                                            .addComponent(LabelProgramEnrolled)
-                                            .addComponent(LabelDepartment)
-                                            .addComponent(LabelYearLevel)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LabelPhoneNumber)
-                                            .addComponent(LabelGender)
-                                            .addComponent(LabelAddress)
-                                            .addComponent(LabelEmail)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(LabelCivilStatus)
-                                                .addComponent(LabelNationality))
-                                            .addComponent(LabelZipCode)
-                                            .addComponent(LabelLastName1)
-                                            .addComponent(LabelGuardianName)
-                                            .addComponent(LabelRelationship)
-                                            .addComponent(LabelGuardianPhoneNumber))
-                                        .addGap(173, 173, 173)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LabelNumberOfPayments)
-                                            .addComponent(LabelTotalPayment)
-                                            .addComponent(LabelLastName4)
-                                            .addComponent(LabelPaymentPerMonth)
-                                            .addComponent(LabelInterestRate)
-                                            .addComponent(LabelNumOfYrsToPay)
-                                            .addComponent(LabelTotalAmountNeeded)
-                                            .addComponent(LabelLastName5)
-                                            .addComponent(LabelWhatIsTheFundFor)))))
+                                        .addComponent(LabelIDNo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelIDNo12)))
+                                .addGap(120, 120, 120)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelLastName3)
+                                    .addComponent(LabelProgramEnrolled)
+                                    .addComponent(LabelDepartment)
+                                    .addComponent(LabelYearLevel)))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(LblLACode)))
-                        .addGap(198, 198, 198))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelPhoneNumber)
+                                    .addComponent(LabelGender)
+                                    .addComponent(LabelAddress)
+                                    .addComponent(LabelEmail)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(LabelCivilStatus)
+                                        .addComponent(LabelNationality))
+                                    .addComponent(LabelZipCode)
+                                    .addComponent(LabelLastName1)
+                                    .addComponent(LabelGuardianName)
+                                    .addComponent(LabelRelationship)
+                                    .addComponent(LabelGuardianPhoneNumber))
+                                .addGap(143, 143, 143)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelLastName4)
+                                    .addComponent(LabelNumberOfPayments)
+                                    .addComponent(LabelPaymentPerMonth)
+                                    .addComponent(LabelInterestRate)
+                                    .addComponent(LabelNumOfYrsToPay)
+                                    .addComponent(LabelTotalAmountNeeded)
+                                    .addComponent(LabelLastName5)
+                                    .addComponent(LabelWhatIsTheFundFor)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LabelTotalPayment)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(LabelTotalPayment12)))))
+                        .addContainerGap(140, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ApproveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(DeclineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))))
+                        .addGap(59, 59, 59))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblLACode)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LblLACode12)
+                            .addComponent(LblLACode))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LabelLastName2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelIDNo)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelIDNo)
+                            .addComponent(LabelIDNo12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelFullName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -510,12 +507,14 @@ public class ApplicantSummary extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addComponent(LabelNumberOfPayments)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelTotalPayment)
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ApproveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DeclineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(69, 69, 69))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelTotalPayment)
+                            .addComponent(LabelTotalPayment12))))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ApproveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DeclineBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92))
         );
 
         pack();
@@ -630,6 +629,7 @@ public class ApplicantSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelGuardianName;
     private javax.swing.JLabel LabelGuardianPhoneNumber;
     private javax.swing.JLabel LabelIDNo;
+    private javax.swing.JLabel LabelIDNo12;
     private javax.swing.JLabel LabelInterestRate;
     private javax.swing.JLabel LabelLastName1;
     private javax.swing.JLabel LabelLastName2;
@@ -645,10 +645,12 @@ public class ApplicantSummary extends javax.swing.JFrame {
     private javax.swing.JLabel LabelRelationship;
     private javax.swing.JLabel LabelTotalAmountNeeded;
     private javax.swing.JLabel LabelTotalPayment;
+    private javax.swing.JLabel LabelTotalPayment12;
     private javax.swing.JLabel LabelWhatIsTheFundFor;
     private javax.swing.JLabel LabelYearLevel;
     private javax.swing.JLabel LabelZipCode;
     private javax.swing.JLabel LblLACode;
+    private javax.swing.JLabel LblLACode12;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
