@@ -226,6 +226,7 @@ public class ConnectionString {
         return totalApplicants;
     }
     
+    
     //
     public double totalAmountReceivable(){
         double totalAmountReceivable = 0;
@@ -307,6 +308,196 @@ public class ConnectionString {
             return loanApplications;
         }
         
+            //get the applicant summary details - Tab(Applicant Summary)
+        
+        public void getApplicantSummary(int laCode, Student student, Student education, StudentLoan loan) {
+        	String queryGetApplicantSummary = "SELECT * FROM loan_table l INNER JOIN student_table s ON l.student_id = s.id INNER JOIN education_table e ON s.id = e.student_id WHERE l.id = ?;";
+            try {
+                // Update connection string with your database credentials
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                PreparedStatement psGetApplicantSummary = conn.prepareStatement(queryGetApplicantSummary);
+                psGetApplicantSummary.setInt(1,laCode );
+                ResultSet rs = psGetApplicantSummary.executeQuery();
+                
+                //JOptionPane.showMessageDialog(null, ""+ laCode);
+                        if (rs.next()) {
+                        	student.setFirstName(rs.getString("s.first_name"));
+                        	student.setMiddleName(rs.getString("s.middle_name"));
+                        	student.setLastName(rs.getString("s.last_name"));
+                        	student.setSuffix(rs.getString("s.suffix"));
+                        	student.setBirthdate(rs.getString("s.birthdate"));
+                        	student.setGender(rs.getString("s.gender"));
+                        	student.setPhoneNumber(rs.getString("s.phone_number"));
+                        	student.setEmailAddress(rs.getString("s.email"));
+                        	student.setNationality(rs.getString("s.nationality"));
+                        	student.setCivilStatus(rs.getString("s.civil_status"));
+                        	student.setAddress(rs.getString("s.address")); 
+                        	student.setZipCode(rs.getString("s.zip_code"));
+                        	student.setGuardianFullName(rs.getString("s.guardian_fullname"));
+                        	student.setGuardianRelationship(rs.getString("s.guardian_relationship"));
+                        	student.setGuardianContactNumber(rs.getString("s.guardian_contact_number"));
+                        	
+                        	education.setIdNumber(rs.getString("e.student_id"));
+                        	education.setDepartment(rs.getString("e.department"));
+                        	education.setProgramEnrolled(rs.getString("e.program_enrolled"));
+                        	education.setYearLevel(rs.getString("e.year_level"));
+
+                            DecimalFormat df = new DecimalFormat("#.00");
+                        	loan.setTotalAmount(Double.parseDouble(df.format(rs.getDouble("l.amount"))));
+                        	loan.setNumYrsToPay(Double.parseDouble(df.format(rs.getDouble("l.num_of_yrs_to_pay"))));
+                        	loan.setInterestRate(Double.parseDouble(df.format(rs.getDouble("l.interest_rate"))));
+                        	loan.setTotalPayment(Double.parseDouble(df.format(rs.getDouble("l.total_payment"))));
+                        	loan.setNumPayments(Double.parseDouble(df.format(rs.getDouble("l.num_of_payments"))));
+                        	loan.setPaymentPerMonth(Double.parseDouble(df.format(rs.getDouble("l.monthly_payment"))));
+                        	loan.setPurpose(rs.getString("l.loan_purpose"));
+                        	//kulang created_on...
+                        	
+                        
+
+                        }
+                        
+                    psGetApplicantSummary.close();
+                    conn.close();
+                    rs.close();      
+                }catch(Exception ex){
+                        JOptionPane.showMessageDialog(null, "Error getApplicantSummary() :  " + ex.getMessage());
+
+                }
+        }
+        //////////APPROVE APPLICANT
+        //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
+        //dbOperation.approveApplicant();
+        public boolean approveApplicant(String studentID) {
+            String queryApproveApplicant = "UPDATE student_table SET is_active = 1 WHERE id = ?;";
+            JOptionPane.showMessageDialog(null, "public boolean approveApplicant(String studentID) :  " + studentID);
+
+            boolean status = false;
+            try { 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+
+                PreparedStatement psApproveApplicant = conn.prepareStatement(queryApproveApplicant);
+
+                psApproveApplicant.setString(1,studentID );
+                int rowsAffected = psApproveApplicant.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    status = true;
+                    JOptionPane.showMessageDialog(null, "Applicant approved!");
+                }
+
+                psApproveApplicant.close();
+                conn.close();
+
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error approveApplicant(String studentID) :  " + ex.getMessage());
+            }
+            return status;
+        }
+        /*public boolean deleteStudent(String studentID) {
+    String queryDeleteStudent = "DELETE FROM student_table WHERE id = ?;";
+
+    try { 
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+
+        PreparedStatement psDeleteStudent = conn.prepareStatement(queryDeleteStudent);
+
+        psDeleteStudent.setString(1, studentID);
+        int rowsAffected = psDeleteStudent.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Student record deleted!");
+        }
+
+        psDeleteStudent.close();
+        conn.close();
+
+    }catch(Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error deleteStudent(String studentID) :  " + ex.getMessage());
+    }
+
+    return rowsAffected > 0;
+}
+
+public boolean deleteLoanRecord(String loanID) {
+    String queryDeleteLoanRecord = "DELETE FROM loan_table WHERE id = ?;";
+
+    try { 
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+
+        PreparedStatement psDeleteLoanRecord = conn.prepareStatement(queryDeleteLoanRecord);
+
+        psDeleteLoanRecord.setString(1, loanID);
+        int rowsAffected = psDeleteLoanRecord.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Loan record deleted!");
+        }
+
+        psDeleteLoanRecord.close();
+        conn.close();
+
+    }catch(Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error deleteLoanRecord(String loanID) :  " + ex.getMessage());
+    }
+
+    return rowsAffected > 0;
+}
+
+public boolean deleteEducation(String educID) {
+    String queryDeleteEducation = "DELETE FROM education_table WHERE id = ?;";
+
+    try { 
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+
+        PreparedStatement psDeleteEducation = conn.prepareStatement(queryDeleteEducation);
+
+        psDeleteEducation.setString(1, educID);
+        int rowsAffected = psDeleteEducation.executeUpdate();
+
+        if (rowsAffected > 0) {
+            JOptionPane.showMessageDialog(null, "Education record deleted!");
+        }
+
+        psDeleteEducation.close();
+        conn.close();
+
+    }catch(Exception ex) {
+        JOptionPane.showMessageDialog(null, "Error deleteEducation(String educID) :  " + ex.getMessage());
+    }
+
+    return rowsAffected > 0;
+}*/
+        public boolean disapproveApplicant(String studentID, int laCode) {
+            String queryApproveApplicant = "UPDATE student_table SET is_active = 1 WHERE id = ?;";
+            JOptionPane.showMessageDialog(null, "public boolean approveApplicant(String studentID) :  " + studentID);
+
+            boolean status = false;
+            try { 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+
+                PreparedStatement psApproveApplicant = conn.prepareStatement(queryApproveApplicant);
+
+                psApproveApplicant.setString(1,studentID );
+                int rowsAffected = psApproveApplicant.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    status = true;
+                    JOptionPane.showMessageDialog(null, "Applicant approved!");
+                }
+
+                psApproveApplicant.close();
+                conn.close();
+
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error approveApplicant(String studentID) :  " + ex.getMessage());
+            }
+            return status;
+        	
+        }
+        
+        
+        
+        
 //     in payment tab, view student loan info
         public List<String[]> viewLoanerInfo(int laCode){
             List<String[]> viewLoanerInfo = new ArrayList<>();
@@ -318,10 +509,10 @@ public class ConnectionString {
                 psViewLoanInfo.setInt(1,laCode );
                 ResultSet rs = psViewLoanInfo.executeQuery();
                 
-                JOptionPane.showMessageDialog(null, ""+ laCode);
+                //JOptionPane.showMessageDialog(null, ""+ laCode);
                         while (rs.next()) {
                                 String[] tbData = new String[7]; // Increase array size to accommodate the created_on field
-                                tbData[0] = "SL" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
+                                tbData[0] = String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
                                 String fn = rs.getString("s.first_name");
                                 String mn = rs.getString("s.middle_name");
                                 String ln = rs.getString("s.last_name");
@@ -407,5 +598,8 @@ public class ConnectionString {
         JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
     }
 }
+    
+    
+    
 
 }

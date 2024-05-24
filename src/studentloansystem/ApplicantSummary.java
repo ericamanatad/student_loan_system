@@ -7,6 +7,7 @@ package studentloansystem;
 import java.awt.Color;
 import java.text.DecimalFormat;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Panewels
@@ -20,8 +21,14 @@ public class ApplicantSummary extends javax.swing.JFrame {
     private Student student;
     private Student education;
     private StudentLoan loan;
+    private int loanID= 0;
 
     public ApplicantSummary() {
+    	initComponents();
+    }
+    
+    public ApplicantSummary(int loanID) {
+    	this.loanID = loanID;
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -32,61 +39,61 @@ public class ApplicantSummary extends javax.swing.JFrame {
         decClick = new Color(255, 162, 127);
         decEnter = new Color(231, 41, 41);
         
-    }
+}
     
-    public void setLACode(String code) {
-        LblLACode.setText(code);
-    }
     
-    public ApplicantSummary(Student student, Student education, StudentLoan loan){
+    public ApplicantSummary(Student student, Student education, StudentLoan loan) {
+        initComponents();
         this.student = student;
         this.education = education;
         this.loan = loan;
-        initComponents();
-        //this.fullName = student.getFirstName();
         setResizable(false);
         panDefault = new Color(65,109,25);
         panClick = new Color(141, 236, 180);
         panEnter = new Color(65, 176, 110);
-        
-        //I dont know how to pass the student data. Last editted
-        //Tiwas ari EKAAAAIIIIII
-        //============================================================================//
-       // JOptionPane.showMessageDialog(null, "Hello, "+ student +"!(LoanSummary(Student student)");
-       
-       String dfMonthlyPayment;
-       String dfTotalPayment;
-        DecimalFormat df = new DecimalFormat("#.00");
-        double paymentMonthly = loan.getPaymentPerMonth();
-        double totalPayment = loan.getTotalPayment();
-        dfMonthlyPayment = df.format(paymentMonthly);
-        dfTotalPayment = df.format(totalPayment);
-        
-        LabelIDNo.setText("<html><b>Student ID No:</b> " + student.getIdNumber() + "</html>");
-        LabelFullName.setText("<html><b>Full Name:</b> " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName() + "</html>");
-        LabelBirthdate.setText("<html><b>Birthdate:</b> " + student.getBirthdate() + "</html>");
-        LabelGender.setText("<html><b>Gender:</b> " + student.getGender() + "</html>");
-        LabelPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getPhoneNumber() + "</html>");
-        LabelEmail.setText("<html><b>Email Address:</b> " + student.getEmailAddress() + "</html>");
-        LabelNationality.setText("<html><b>Nationality:</b> " + student.getNationality() + "</html>");
-        LabelCivilStatus.setText("<html><b>Civil Status:</b> " + student.getCivilStatus() + "</html>");
-        LabelAddress.setText("<html><b>Address:</b> " + student.getAddress() + "</html>");
-        LabelZipCode.setText("<html><b>Zip Code:</b> " + student.getZipCode() + "</html>");
-        LabelGuardianName.setText("<html><b>Name of parent/guardian:</b> " + student.getGuardianFullName() + "</html>");
-        LabelRelationship.setText("<html><b>Relationship:</b> " + student.getGuardianRelationship() + "</html>");
-        LabelGuardianPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getGuardianContactNumber() + "</html>");
-        LabelDepartment.setText("<html><b>Department Name:</b> " + education.getDepartment() + "</html>");
-        LabelProgramEnrolled.setText("<html><b>Program Enrolled:</b> " + education.getProgramEnrolled() + "</html>");
-        LabelYearLevel.setText("<html><b>Year Level:</b> " + education.getYearLevel() + "</html>");
-        LabelTotalAmountNeeded.setText("<html><b>Total amount needed:</b> " + loan.getTotalAmount() + "</html>");
-        LabelNumOfYrsToPay.setText("<html><b>Number of years to pay:</b> " + loan.getNumYrsToPay() + "</html>");
-        LabelInterestRate.setText("<html><b>Interest Rate:</b> " + loan.getInterestRate() + "</html>");
-        LabelWhatIsTheFundFor.setText("<html><b>What is the fund for?:</b> " + loan.getPurpose() + "</html>");
-        LabelPaymentPerMonth.setText("<html><b>Payment per Month:</b> " + dfMonthlyPayment + "</html>");
-        LabelNumberOfPayments.setText("<html><b>Number of Payments:</b>  " + loan.getNumPayments() + "</html>");
-        LabelTotalPayment.setText("<html><b>Total Payment:</b> " + dfTotalPayment + "</html>" );
-        
+    } 
+    
+    public void viewApplicantSummary(int loanID) {
+    	  try {
+    		  JOptionPane.showMessageDialog(null, "ApplicantSummary(int code) : "+ loanID);
+              LblLACode.setText(""+ loanID);
+              ConnectionString dbOperation = new ConnectionString();
+              Student student = new Student();
+              Student education = new Student(); 
+              StudentLoan loan = new StudentLoan(); 
+              dbOperation.getApplicantSummary(loanID, student, education, loan);
+              
+              
+              //change label texts
+              LabelIDNo.setText("" +  education.getIdNumber());
+              LabelFullName.setText("<html><b>Full Name:</b> " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName() + "</html>");
+              LabelBirthdate.setText("<html><b>Birthdate:</b> " + student.getBirthdate() + "</html>");
+              LabelGender.setText("<html><b>Gender:</b> " + student.getGender() + "</html>");
+              LabelPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getPhoneNumber() + "</html>");
+              LabelEmail.setText("<html><b>Email Address:</b> " + student.getEmailAddress() + "</html>");
+              LabelNationality.setText("<html><b>Nationality:</b> " + student.getNationality() + "</html>");
+              LabelCivilStatus.setText("<html><b>Civil Status:</b> " + student.getCivilStatus() + "</html>");
+              LabelAddress.setText("<html><b>Address:</b> " + student.getAddress() + "</html>");
+              LabelZipCode.setText("<html><b>Zip Code:</b> " + student.getZipCode() + "</html>");
+              LabelGuardianName.setText("<html><b>Name of parent/guardian:</b> " + student.getGuardianFullName() + "</html>");
+              LabelRelationship.setText("<html><b>Relationship:</b> " + student.getGuardianRelationship() + "</html>");
+              LabelGuardianPhoneNumber.setText("<html><b>Phone Number:</b> " + student.getGuardianContactNumber() + "</html>");
+              LabelDepartment.setText("<html><b>Department Name:</b> " + education.getDepartment() + "</html>");
+              LabelProgramEnrolled.setText("<html><b>Program Enrolled:</b> " + education.getProgramEnrolled() + "</html>");
+              LabelYearLevel.setText("<html><b>Year Level:</b> " + education.getYearLevel() + "</html>");
+              LabelTotalAmountNeeded.setText("<html><b>Total amount needed:</b> " + loan.getTotalAmount() + "</html>");
+              LabelNumOfYrsToPay.setText("<html><b>Number of years to pay:</b> " + loan.getNumYrsToPay() + "</html>");
+              LabelInterestRate.setText("<html><b>Interest Rate:</b> " + loan.getInterestRate() + "</html>");
+              LabelWhatIsTheFundFor.setText("<html><b>What is the fund for?:</b> " + loan.getPurpose() + "</html>");
+              LabelPaymentPerMonth.setText("<html><b>Payment per Month:</b> " + loan.getPaymentPerMonth() + "</html>");
+              LabelNumberOfPayments.setText("<html><b>Number of Payments:</b>  " + loan.getNumPayments() + "</html>");
+              LabelTotalPayment.setText("<html><b>Total Payment:</b> " + loan.getTotalPayment() + "</html>" );
+              
+    	  }catch(Exception ex) {
+    		  JOptionPane.showMessageDialog(null, ex.getMessage());
+    	  }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -256,6 +263,20 @@ public class ApplicantSummary extends javax.swing.JFrame {
         ApproveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ApproveBtnMouseClicked(evt);
+                try {
+                	/////////////////////////////////////////// approvveeeee
+                    int laCode = Integer.parseInt(LblLACode.getText());
+                    JOptionPane.showMessageDialog(null, "ApproveBtnMouseClicked" + laCode);
+                    //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
+                    ConnectionString dbOperation = new ConnectionString();
+                    String idNumber = LabelIDNo.getText();
+                    JOptionPane.showMessageDialog(null, "ApproveBtnMouseClicked" + laCode + "and " + idNumber);
+
+                    dbOperation.approveApplicant(idNumber);
+                	
+                }catch(Exception ex) {
+                	JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ApproveBtnMouseEntered(evt);
@@ -291,11 +312,26 @@ public class ApplicantSummary extends javax.swing.JFrame {
                 .addComponent(jLabel22)
                 .addContainerGap(8, Short.MAX_VALUE))
         );
-
+/////////////////////////////////decline
         DeclineBtn.setBackground(new java.awt.Color(184, 0, 0));
         DeclineBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeclineBtnMouseClicked(evt);
+                try {
+                	/////////////////////////////////////////// approvveeeee
+                    int laCode = Integer.parseInt(LblLACode.getText());
+                    JOptionPane.showMessageDialog(null, "DeclineBtnMouseClicked" + laCode);
+                    //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
+                    ConnectionString dbOperation = new ConnectionString();
+                    String idNumber = LabelIDNo.getText();
+                    JOptionPane.showMessageDialog(null, "DeclineBtnMouseClicked" + laCode + "and " + idNumber);
+
+                    dbOperation.disapproveApplicant(idNumber, laCode);
+                	
+                }catch(Exception ex) {
+                	JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+                
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 DeclineBtnMouseEntered(evt);

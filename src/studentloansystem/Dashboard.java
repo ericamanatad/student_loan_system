@@ -147,7 +147,7 @@ public class Dashboard extends javax.swing.JFrame {
             HomeBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HomeBtnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(jLabel5) 
                 .addContainerGap())
         );
 
