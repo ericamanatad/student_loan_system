@@ -283,11 +283,11 @@ public class ConnectionString {
                 ResultSet rs = psViewLoanApplications.executeQuery();
                 while (rs.next()) {
                     String[] tbData = new String[6]; // Increase array size to accommodate the created_on field
-                    tbData[0] = "SL" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
+                    tbData[0] = "" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
                     String fn = rs.getString("s.first_name");
                     String mn = rs.getString("s.middle_name");
                     String ln = rs.getString("s.last_name");
-                    String studentName = fn + " " + mn + " " + ln;
+                    String studentName = fn + " " + mn + " " + ln;                  
                     tbData[1] = studentName;
                     tbData[2] = String.valueOf(rs.getDouble("l.amount"));
                     tbData[3] = rs.getString("s.is_active"); // Store as a String
@@ -350,7 +350,7 @@ public class ConnectionString {
                         	loan.setNumPayments(Double.parseDouble(df.format(rs.getDouble("l.num_of_payments"))));
                         	loan.setPaymentPerMonth(Double.parseDouble(df.format(rs.getDouble("l.monthly_payment"))));
                         	loan.setPurpose(rs.getString("l.loan_purpose"));
-                        	//kulang created_on...
+                        	//kulang created_on...	
                         	
                         
 
@@ -382,7 +382,6 @@ public class ConnectionString {
 
                 if (rowsAffected > 0) {
                     status = true;
-                    JOptionPane.showMessageDialog(null, "Applicant approved!");
                 }
 
                 psApproveApplicant.close();
@@ -393,81 +392,79 @@ public class ConnectionString {
             }
             return status;
         }
-        /*public boolean deleteStudent(String studentID) {
-    String queryDeleteStudent = "DELETE FROM student_table WHERE id = ?;";
 
-    try { 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+        //delete record
+        public void deleteStudent(String studentID) {
+            String queryDeleteStudent = "DELETE FROM student_table WHERE id = ?;";
 
-        PreparedStatement psDeleteStudent = conn.prepareStatement(queryDeleteStudent);
+            try { 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
 
-        psDeleteStudent.setString(1, studentID);
-        int rowsAffected = psDeleteStudent.executeUpdate();
+                PreparedStatement psDeleteStudent = conn.prepareStatement(queryDeleteStudent);
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(null, "Student record deleted!");
+                psDeleteStudent.setString(1, studentID);
+                int rowsAffected = psDeleteStudent.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Student record deleted!");
+                }
+
+                psDeleteStudent.close();
+                conn.close();
+
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error deleteStudent(String studentID) :  " + ex.getMessage());
+            }
         }
 
-        psDeleteStudent.close();
-        conn.close();
+        public void deleteLoanRecord(int loanID) {
+            String queryDeleteLoanRecord = "DELETE FROM loan_table WHERE id = ?;";
 
-    }catch(Exception ex) {
-        JOptionPane.showMessageDialog(null, "Error deleteStudent(String studentID) :  " + ex.getMessage());
-    }
+            try { 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
 
-    return rowsAffected > 0;
-}
+                PreparedStatement psDeleteLoanRecord = conn.prepareStatement(queryDeleteLoanRecord);
 
-public boolean deleteLoanRecord(String loanID) {
-    String queryDeleteLoanRecord = "DELETE FROM loan_table WHERE id = ?;";
+                psDeleteLoanRecord.setInt(1, loanID);
+                int rowsAffected = psDeleteLoanRecord.executeUpdate();
 
-    try { 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Loan record deleted!");
+                }
 
-        PreparedStatement psDeleteLoanRecord = conn.prepareStatement(queryDeleteLoanRecord);
+                psDeleteLoanRecord.close();
+                conn.close();
 
-        psDeleteLoanRecord.setString(1, loanID);
-        int rowsAffected = psDeleteLoanRecord.executeUpdate();
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error deleteLoanRecord(String loanID) :  " + ex.getMessage());
+            }
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(null, "Loan record deleted!");
         }
 
-        psDeleteLoanRecord.close();
-        conn.close();
+        public void deleteEducation(String studentID) {
+            String queryDeleteEducation = "DELETE FROM education_table WHERE student_id = ?;";
 
-    }catch(Exception ex) {
-        JOptionPane.showMessageDialog(null, "Error deleteLoanRecord(String loanID) :  " + ex.getMessage());
-    }
+            try { 
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
 
-    return rowsAffected > 0;
-}
+                PreparedStatement psDeleteEducation = conn.prepareStatement(queryDeleteEducation);
 
-public boolean deleteEducation(String educID) {
-    String queryDeleteEducation = "DELETE FROM education_table WHERE id = ?;";
+                psDeleteEducation.setString(1, studentID);
+                int rowsAffected = psDeleteEducation.executeUpdate();
 
-    try { 
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null, "Education record deleted!");
+                }
 
-        PreparedStatement psDeleteEducation = conn.prepareStatement(queryDeleteEducation);
+                psDeleteEducation.close();
+                conn.close();
 
-        psDeleteEducation.setString(1, educID);
-        int rowsAffected = psDeleteEducation.executeUpdate();
+            }catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, "Error deleteEducation(String educID) :  " + ex.getMessage());
+            }
 
-        if (rowsAffected > 0) {
-            JOptionPane.showMessageDialog(null, "Education record deleted!");
         }
-
-        psDeleteEducation.close();
-        conn.close();
-
-    }catch(Exception ex) {
-        JOptionPane.showMessageDialog(null, "Error deleteEducation(String educID) :  " + ex.getMessage());
-    }
-
-    return rowsAffected > 0;
-}*/
-        public boolean disapproveApplicant(String studentID, int laCode) {
+        /*  public boolean disapproveApplicant(String studentID, int laCode) {
             String queryApproveApplicant = "UPDATE student_table SET is_active = 1 WHERE id = ?;";
             JOptionPane.showMessageDialog(null, "public boolean approveApplicant(String studentID) :  " + studentID);
 
@@ -495,6 +492,7 @@ public boolean deleteEducation(String educID) {
         	
         }
         
+        */
         
         
         
@@ -541,63 +539,156 @@ public boolean deleteEducation(String educID) {
             return viewLoanerInfo;
 
         }
+        
+        
+        //when approving , also add partial transaction
+        public void addPartialTransaction(int laCode, String studentID, double remainingBalance) {
+        	String queryAddPartialTransaction = "INSERT INTO transaction_table (la_code, student_id, amount_paid, remaining_balance, date_paid) VALUES(?, ?, 0, ?, ?);";
+        	try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+	         PreparedStatement psAddPartialTransaction = conn.prepareStatement(queryAddPartialTransaction)) {
 
-    public void addPaymentTransaction(int laCode, double inputPayment, String name, String studentID, double amountBorrowed, double monthlyPayment, double numOfYearsToPay, double remainingBalance) {
-    String queryGetStudentId = "SELECT student_id FROM loan_table WHERE id = ?;";
-    JOptionPane.showMessageDialog(null, "values passed in addPaymentTransaction : "+ inputPayment + ", " + laCode + ", " + name + ",  "+ studentID+ ", " + amountBorrowed + ", "+ monthlyPayment + ", " + numOfYearsToPay + ", "+ remainingBalance );
+        		psAddPartialTransaction.setInt(1, laCode);
+        		psAddPartialTransaction.setString(2, studentID);
+        		psAddPartialTransaction.setDouble(3, remainingBalance);
+                long timestampValue = System.currentTimeMillis();
+                Timestamp paymentTimestamp = new Timestamp(timestampValue);
 
-    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
-         PreparedStatement psGetStudentId = conn.prepareStatement(queryGetStudentId)) {
+                psAddPartialTransaction.setTimestamp(4, paymentTimestamp);
+                psAddPartialTransaction.executeUpdate();
+                
+                
+                JOptionPane.showMessageDialog(null, "Applicant approved!");
 
-        psGetStudentId.setInt(1, laCode);
-        ResultSet rs = psGetStudentId.executeQuery();
+                
+	        	}catch(Exception ex) {
+	                JOptionPane.showMessageDialog(null, "Error addPartialTransaction() - INSERT: " + ex.getMessage());
+	        	}
+	        }
 
-        if (rs.next()) {
-            String studentId = rs.getString("student_id");
-
-            // Get the latest payment transaction from the database
-            String queryGetLatestPaymentTransaction = "SELECT * FROM transaction_table WHERE la_code = ? ORDER BY date_paid DESC LIMIT 1;";
-            try (PreparedStatement psGetLatestPaymentTransaction = conn.prepareStatement(queryGetLatestPaymentTransaction)) {
-                psGetLatestPaymentTransaction.setInt(1, laCode);
-                ResultSet rsLatestPayment = psGetLatestPaymentTransaction.executeQuery();
-
-                double oldRemainingBalance = 0;
-                if (rsLatestPayment.next()) {
-                    oldRemainingBalance = rsLatestPayment.getDouble("remaining_balance");
+        //storing payment history
+	    public void addPaymentTransaction(int laCode, double inputPayment, String name, String studentID, double amountBorrowed, double monthlyPayment, double numOfYearsToPay, double remainingBalance) {
+		    String queryGetStudentId = "SELECT student_id FROM loan_table WHERE id = ?;";
+		    JOptionPane.showMessageDialog(null, "values passed in addPaymentTransaction : "+ inputPayment + ", " + laCode + ", " + name + ",  "+ studentID+ ", " + amountBorrowed + ", "+ monthlyPayment + ", " + numOfYearsToPay + ", "+ remainingBalance );
+		
+		    try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+		         PreparedStatement psGetStudentId = conn.prepareStatement(queryGetStudentId)) {
+		
+		        psGetStudentId.setInt(1, laCode);
+		        ResultSet rs = psGetStudentId.executeQuery();
+		
+		        if (rs.next()) {
+		            String studentId = rs.getString("student_id");
+		
+		            // Get the latest payment transaction from the database
+		            String queryGetLatestPaymentTransaction = "SELECT * FROM transaction_table WHERE la_code = ? ORDER BY date_paid DESC LIMIT 1;";
+		            try (PreparedStatement psGetLatestPaymentTransaction = conn.prepareStatement(queryGetLatestPaymentTransaction)) {
+		                psGetLatestPaymentTransaction.setInt(1, laCode);
+		                ResultSet rsLatestPayment = psGetLatestPaymentTransaction.executeQuery();
+		
+		                double oldRemainingBalance = 0;
+		                if (rsLatestPayment.next()) {
+		                    oldRemainingBalance = rsLatestPayment.getDouble("remaining_balance");
+		                }
+		
+		                // Update the remaining balance based on the input payment
+		                double newRemainingBalance = oldRemainingBalance - inputPayment;
+		
+		                // Add the new payment transaction to the database
+		                String queryAddPaymentTransaction = "INSERT INTO transaction_table (la_code, student_id, amount_paid, remaining_balance, date_paid) VALUES (?, ?, ?, ?, ?);";
+		                try (PreparedStatement psAddPaymentTransaction = conn.prepareStatement(queryAddPaymentTransaction)) {
+		                    psAddPaymentTransaction.setInt(1, laCode);
+		                    psAddPaymentTransaction.setString(2, studentId);
+		                    psAddPaymentTransaction.setDouble(3, inputPayment);
+		                    psAddPaymentTransaction.setDouble(4, newRemainingBalance);
+		                    long timestampValue = System.currentTimeMillis();
+		                    Timestamp paymentTimestamp = new Timestamp(timestampValue);
+		
+		                    psAddPaymentTransaction.setTimestamp(5, paymentTimestamp);
+		                    psAddPaymentTransaction.executeUpdate();
+		
+		                    JOptionPane.showMessageDialog(null, "Payment recorded successfully. New remaining balance: PHP" + newRemainingBalance);
+		
+		                } catch (SQLException e) {
+		                    JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - INSERT: " + e.getMessage());
+		                }
+		            } catch (SQLException e) {
+		                JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
+		            }
+		        } else {
+		            JOptionPane.showMessageDialog(null, "Loan record not found for laCode: " + laCode);
+		        }
+		
+		    } catch (SQLException e) {
+		        JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
+		    }
+	}
+	    
+	    
+	    /*
+	     *     public List<String[]> viewLoanApplications() {
+            List<String[]> loanApplications = new ArrayList<>();
+            String queryViewLoanApplications = "SELECT l.id, l.amount, s.last_name, s.first_name, s.middle_name, s.is_active, l.created_on FROM student_table s JOIN loan_table l ON s.id = l.student_id WHERE s.is_active = 0;";
+            try {
+                // Update connection string with your database credentials
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+                PreparedStatement psViewLoanApplications = conn.prepareStatement(queryViewLoanApplications);
+                ResultSet rs = psViewLoanApplications.executeQuery();
+                while (rs.next()) {
+                    String[] tbData = new String[6]; // Increase array size to accommodate the created_on field
+                    tbData[0] = "" + String.valueOf(rs.getInt("l.id")); // Prepend "SL" to loan ID
+                    String fn = rs.getString("s.first_name");
+                    String mn = rs.getString("s.middle_name");
+                    String ln = rs.getString("s.last_name");
+                    String studentName = fn + " " + mn + " " + ln;                  
+                    tbData[1] = studentName;
+                    tbData[2] = String.valueOf(rs.getDouble("l.amount"));
+                    tbData[3] = rs.getString("s.is_active"); // Store as a String
+                    // Format timestamp to string for display
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    tbData[4] = dateFormat.format(rs.getTimestamp("l.created_on")); // Add created_on timestamp
+                    loanApplications.add(tbData);
+                    
+                    psViewLoanApplications.close();
+                    conn.close();
+                    rs.close();
                 }
-
-                // Update the remaining balance based on the input payment
-                double newRemainingBalance = oldRemainingBalance - inputPayment;
-
-                // Add the new payment transaction to the database
-                String queryAddPaymentTransaction = "INSERT INTO transaction_table (la_code, student_id, amount_paid, remaining_balance, date_paid) VALUES (?, ?, ?, ?, ?);";
-                try (PreparedStatement psAddPaymentTransaction = conn.prepareStatement(queryAddPaymentTransaction)) {
-                    psAddPaymentTransaction.setInt(1, laCode);
-                    psAddPaymentTransaction.setString(2, studentId);
-                    psAddPaymentTransaction.setDouble(3, inputPayment);
-                    psAddPaymentTransaction.setDouble(4, newRemainingBalance);
-                    long timestampValue = System.currentTimeMillis();
-                    Timestamp paymentTimestamp = new Timestamp(timestampValue);
-
-                    psAddPaymentTransaction.setTimestamp(5, paymentTimestamp);
-                    psAddPaymentTransaction.executeUpdate();
-
-                    JOptionPane.showMessageDialog(null, "Payment recorded successfully. New remaining balance: PHP" + newRemainingBalance);
-
-                } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - INSERT: " + e.getMessage());
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error viewLoanApplications() :  " + ex.getMessage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Loan record not found for laCode: " + laCode);
+            return loanApplications;
         }
+        
+	     */
+	    public List<String[]> viewPaymentHistory(int laCode) {
+	    	List<String[]> paymentHistory = new ArrayList<>();
+	    
+	    	String queryViewPaymentHistory = "SELECT * FROM transaction_table WHERE la_code = ?";
+	    	try(Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
+	   	         PreparedStatement psViewPaymentHistory = conn.prepareStatement(queryViewPaymentHistory)) {
 
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, "Error addPaymentTransaction() - SELECT: " + e.getMessage());
-    }
-}
+	    		 psViewPaymentHistory.setInt(1, laCode);
+	    		 ResultSet rs = psViewPaymentHistory.executeQuery();
+	    		 
+	    		 while (rs.next()) { 
+	    			 DecimalFormat df = new DecimalFormat("#.00");
+	                    String[] tbData = new String[7]; 
+	                    tbData[0] = "SL " + String.valueOf(rs.getInt("la_code")); 
+	                    tbData[1] = rs.getString("student_id"); // Store as a String
+	                    tbData[3] = String.valueOf(df.format(rs.getDouble("amount_paid")));
+	                    tbData[4] = String.valueOf(df.format(rs.getDouble("remaining_balance")));
+	                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	                    tbData[5] = dateFormat.format(rs.getTimestamp("date_paid"));
+	                   paymentHistory.add(tbData);
+	    		 }
+
+	                   
+	   	        	}catch(Exception ex) {
+	   	                JOptionPane.showMessageDialog(null, "Error addPartialTransaction() - INSERT: " + ex.getMessage());
+	   	        	}
+	    		return paymentHistory;
+	    	}
     
     
     

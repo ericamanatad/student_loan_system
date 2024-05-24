@@ -6,6 +6,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+
+import studentloansystem.LoanApplications.ButtonEditor;
+import studentloansystem.LoanApplications.ButtonRenderer;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,10 +40,9 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/studentloansystem", "root", "");
             String queryViewActiveLoaners = "SELECT l.id, l.amount, l.monthly_payment, l.num_of_yrs_to_pay,  s.last_name, s.first_name, s.middle_name, l.created_on, t.remaining_balance FROM student_table s JOIN loan_table l ON s.id = l.student_id JOIN transaction_table t ON l.id = t.la_code WHERE s.is_active = 1;";
             PreparedStatement psViewActiveLoaners = conn.prepareStatement(queryViewActiveLoaners);
-
             ResultSet rs = psViewActiveLoaners.executeQuery();
             while (rs.next()) {
-                String loanID = "SL" + rs.getInt("l.id"); // Prepend "SL" to loan ID
+                String loanID =""+ rs.getInt("l.id"); // Prepend "SL" to loan ID
                 String fn = rs.getString("s.first_name");
                 String mn = rs.getString("s.middle_name");
                 String ln = rs.getString("s.last_name");
@@ -67,28 +70,22 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(211, 250, 215));
 
-        DefaultTableModel model = new DefaultTableModel(new Object[][]{}, new String[]{"LACode", "Name", "Amount Borrowed", "Monthly Payment", "Num Years To Pay", "Remaining Balance", "Action"}) {
+        DefaultTableModel model = new DefaultTableModel(
+        		new Object[][]{}, 
+        		new String[]{"LACode", "Name", "Amount Borrowed", "Monthly Payment", "Num Years To Pay", "Remaining Balance", "Action"}) {
             private static final long serialVersionUID = 1L;
 
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 switch (columnIndex) {
-                    case 0:
-                        return String.class;
-                    case 1:
-                        return String.class;
-                    case 2:
-                        return Double.class;
-                    case 3:
-                        return Double.class;
-                    case 4:
-                        return Integer.class;
-                    case 5:
-                        return Double.class;
-                    case 6:
-                        return JButton.class;  // Change to JButton for an action button
-                    default:
-                        return String.class;
+                    case 0: return String.class;
+                    case 1: return String.class;
+                    case 2: return Double.class;
+                    case 3: return Double.class;
+                    case 4: return Integer.class;
+                    case 5: return Double.class;
+                    case 6: return JButton.class;  // Change to JButton for an action button
+                    default:return String.class;
                 }
             }
 
@@ -97,25 +94,24 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
                 return column == 6; // Only the "Action" column should be editable
             }
         };
+        
 
-        JTableActiveLoaners.setModel(new DefaultTableModel(
-            	new Object[][] {
-            	},
-            	new String[] {
-            		"LACode", "Name", "Amount Borrowed", "Monthly Payment", "Num Years To Pay", "Remaining Balance", "Action"
-            	}
-            ));
+        JTableActiveLoaners.setModel(model);
         JTableActiveLoaners.getColumn("Action").setCellRenderer(new ButtonRenderer());
-        class LeftAlignRenderer extends DefaultTableCellRenderer {
+        JTableActiveLoaners.getColumn("Action").setCellEditor(new ButtonEditor(JTableActiveLoaners));
+        JTableActiveLoaners.setRowHeight(30); // Increase row height for better readability
+        
+        
 
-            public LeftAlignRenderer() {
-                super();
-                setHorizontalAlignment(SwingConstants.LEFT); // Align text to the left
-            }
+        // Center align text in cells
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < JTableActiveLoaners.getColumnCount() - 1; i++) {
+        	JTableActiveLoaners.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
 
-
         jScrollPane1.setViewportView(JTableActiveLoaners);
+        
         JTableActiveLoaners.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -146,16 +142,6 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
 
         pack();
     }
-//
-//    private void JTableActiveLoanersMouseMoved(java.awt.event.MouseEvent evt) {
-//        int row = JTableActiveLoaners.rowAtPoint(evt.getPoint());
-//        if (row >= 0 && row < JTableActiveLoaners.getRowCount()) {
-//            JTableActiveLoaners.setRowSelectionInterval(row, row);
-//        } else {
-//            JTableActiveLoaners.clearSelection();
-//        }
-//        JTableActiveLoaners.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-//    }
 
  // Custom button renderer class
     class ButtonRenderer extends JButton implements TableCellRenderer {
@@ -192,34 +178,23 @@ public class ActiveLoaners extends javax.swing.JInternalFrame {
         public Object getCellEditorValue() {
             return "Action";
         }
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            int selectedRow = table.getSelectedRow();
-//            if (selectedRow != -1) {
-//                String loanID = (String) table.getValueAt(selectedRow, 0);
-//                String studentName = (String) table.getValueAt(selectedRow, 1);
-//                double amountBorrowed = (double) table.getValueAt(selectedRow, 2);
-//                double monthlyPayment = (double) table.getValueAt(selectedRow, 3);
-//                int numYearsToPay = (int) table.getValueAt(selectedRow, 4);
-//                double remainingBalance = (double) table.getValueAt(selectedRow, 5);
-//
-//                // Create and display the ApplicantSummary form
-//                ApplicantSummary applicantSummary = new ApplicantSummary();
-//                applicantSummary.setLACode(loanID);  // Set the Loan_ID in the LblLACode
-//                applicantSummary.setStudentName(studentName);  // Set the student name
-//                applicantSummary.setAmountBorrowed(amountBorrowed);  // Set the amount borrowed
-//                applicantSummary.setMonthlyPayment(monthlyPayment);  // Set the monthly payment
-//                applicantSummary.setNumYearsToPay(numYearsToPay);  // Set the number of years to pay
-//                applicantSummary.setRemainingBalance(remainingBalance);  // Set the remaining balance
-//                applicantSummary.setVisible(true);
-//            }
-//            fireEditingStopped();
-//        }
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
+			try {
+            	int selectedRow = table.getSelectedRow(); 
+                if (selectedRow != -1) {
+                    String loanId = (String) table.getValueAt(selectedRow, 0);
+                    int loanID = Integer.parseInt(loanId);
+                    JOptionPane.showMessageDialog(null, "loanID in activeLoaners = " + loanID );
+                    System.out.println("LOANID activeLoaners" +loanID);
+                    ActiveLoanerSummary loanerSummary = new ActiveLoanerSummary();
+                    loanerSummary.viewActiveLoanerSummary(loanID);
+                    loanerSummary.setVisible(true);
+                }
+                fireEditingStopped();
+            }catch(Exception ex) {
+            	JOptionPane.showMessageDialog(null, " public void actionPerformed(ActionEvent e" +  ex.getMessage());
+            }
 		}
     }
 

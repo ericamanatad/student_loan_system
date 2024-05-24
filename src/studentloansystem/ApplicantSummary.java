@@ -58,12 +58,12 @@ public class ApplicantSummary extends javax.swing.JFrame {
     		  JOptionPane.showMessageDialog(null, "ApplicantSummary(int code) : "+ loanID);
               LblLACode.setText(""+ loanID);
               ConnectionString dbOperation = new ConnectionString();
+              Student education = new Student();
               Student student = new Student();
-              Student education = new Student(); 
-              StudentLoan loan = new StudentLoan(); 
+              StudentLoan loan = new StudentLoan();
               dbOperation.getApplicantSummary(loanID, student, education, loan);
               
-              
+              System.out.println(student.getFirstName());
               //change label texts
               LabelIDNo.setText("" +  education.getIdNumber());
               LabelFullName.setText("<html><b>Full Name:</b> " + student.getFirstName() + " " + student.getMiddleName() + " "+ student.getLastName() + "</html>");
@@ -87,7 +87,7 @@ public class ApplicantSummary extends javax.swing.JFrame {
               LabelWhatIsTheFundFor.setText("<html><b>What is the fund for?:</b> " + loan.getPurpose() + "</html>");
               LabelPaymentPerMonth.setText("<html><b>Payment per Month:</b> " + loan.getPaymentPerMonth() + "</html>");
               LabelNumberOfPayments.setText("<html><b>Number of Payments:</b>  " + loan.getNumPayments() + "</html>");
-              LabelTotalPayment.setText("<html><b>Total Payment:</b> " + loan.getTotalPayment() + "</html>" );
+              LabelTotalPayment.setText("" + loan.getTotalPayment());
               
     	  }catch(Exception ex) {
     		  JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -270,9 +270,11 @@ public class ApplicantSummary extends javax.swing.JFrame {
                     //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
                     ConnectionString dbOperation = new ConnectionString();
                     String idNumber = LabelIDNo.getText();
+                    double totalPayment = Double.parseDouble(LabelTotalPayment.getText());
                     JOptionPane.showMessageDialog(null, "ApproveBtnMouseClicked" + laCode + "and " + idNumber);
 
                     dbOperation.approveApplicant(idNumber);
+                    dbOperation.addPartialTransaction(laCode, idNumber, totalPayment);
                 	
                 }catch(Exception ex) {
                 	JOptionPane.showMessageDialog(null, ex.getMessage());
@@ -318,15 +320,16 @@ public class ApplicantSummary extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeclineBtnMouseClicked(evt);
                 try {
-                	/////////////////////////////////////////// approvveeeee
+                	/////////////////////////////////////////// Declineee
                     int laCode = Integer.parseInt(LblLACode.getText());
-                    JOptionPane.showMessageDialog(null, "DeclineBtnMouseClicked" + laCode);
                     //UPDATE student_table SET is_active = 1 WHERE id = '123-82345'
                     ConnectionString dbOperation = new ConnectionString();
                     String idNumber = LabelIDNo.getText();
                     JOptionPane.showMessageDialog(null, "DeclineBtnMouseClicked" + laCode + "and " + idNumber);
 
-                    dbOperation.disapproveApplicant(idNumber, laCode);
+                    dbOperation.deleteStudent(idNumber);
+                    dbOperation.deleteLoanRecord(laCode);
+                    dbOperation.deleteEducation(idNumber);
                 	
                 }catch(Exception ex) {
                 	JOptionPane.showMessageDialog(null, ex.getMessage());

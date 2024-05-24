@@ -157,14 +157,9 @@ public class LoanApplications extends JInternalFrame {
             try {
             	int selectedRow = table.getSelectedRow(); 
                 if (selectedRow != -1) {
-                    //int loanID = (int) table.getValueAt(selectedRow, 0);
                     String loanId = (String) table.getValueAt(selectedRow, 0);
                     int loanID = Integer.parseInt(loanId);
 
-                    //String studentName = (String) table.getValueAt(selectedRow, 1);
-                    //double amount = (double) table.getValueAt(selectedRow, 2);
-                   // String timeApplied = (String) table.getValueAt(selectedRow, 3);
-                    JOptionPane.showMessageDialog(null, "loanID = " + loanID );
                     ApplicantSummary applicantSummary = new ApplicantSummary();
                    applicantSummary.viewApplicantSummary(loanID);
                     applicantSummary.setVisible(true);
